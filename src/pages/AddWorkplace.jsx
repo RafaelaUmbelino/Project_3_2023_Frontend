@@ -67,9 +67,9 @@ function AddWorkplace() {
       setTypeOfPlace(PlaceType.coworkSpace);
       setRating(Rating.stars5);
       setDescription("");
-      setPaid(Paid.no);
+      setPaid(Paid.no);*/
 
-      navigate(`/workplaces`); */
+      navigate(`/workplaces`);
     } catch (error) {
       console.log(error);
     }

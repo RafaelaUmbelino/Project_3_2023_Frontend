@@ -50,12 +50,13 @@ class WorkplaceService {
     return this.api.get(`/workplaces/${id}, body`);
   };
 
-  //getbyId / details
   //update
+  updateWorkplace = (id, body) => {
+    return this.api.put(`/workplaces/${id}`, body);
+  };
+
   //delete
-   //delete
-   
-   deleteWorkplace = (id) => {
+  deleteWorkplace = (id) => {
     return this.api.delete(`/workplaces/${id}`);
   };
 }
