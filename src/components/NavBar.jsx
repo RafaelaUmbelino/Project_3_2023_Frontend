@@ -29,6 +29,7 @@ function Navbar() {
   );
 }
 
+//lasjja
 //We just pass the fragment above, we use the ternary to say that if the user is loggedin,
 //we show workplaces and add Workplace, if it's not, we just show signup and login.
 
