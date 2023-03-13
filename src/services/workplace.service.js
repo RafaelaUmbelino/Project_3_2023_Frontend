@@ -50,9 +50,15 @@ class WorkplaceService {
     return this.api.get(`/workplaces/${id}`);
   };
 
-  //getbyId / details
   //update
+  updateWorkplace = (id, body) => {
+    return this.api.put(`/workplaces/${id}`, body);
+  };
+
   //delete
+  deleteWorkplace = (id) => {
+    return this.api.delete(`/workplaces/${id}`);
+  };
 }
 
 const workplaceService = new WorkplaceService();

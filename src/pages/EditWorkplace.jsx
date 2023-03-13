@@ -37,14 +37,15 @@ function EditWorkplace() {
     getWorkplace();
   }, []);
 
-  const deleteWorkplace = async () => {
+  /*   const deleteWorkplace = async () => {
     try {
       await axios.delete(`${import.meta.env.VITE_API_URL}/workplaces/${id}`);
+      console.log(deleteWorkplace);
       navigate("/workplaces");
     } catch (error) {
       console.log(error);
     }
-  };
+  }; */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,8 +84,6 @@ function EditWorkplace() {
 
         <button type="submit">Edit Workplace</button>
       </form>
-
-      <button onClick={deleteWorkplace}>Delete</button>
     </section>
   );
 }
