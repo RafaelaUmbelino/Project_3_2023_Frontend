@@ -53,6 +53,11 @@ class WorkplaceService {
   //getbyId / details
   //update
   //delete
+   //delete
+   
+   deleteWorkplace = (id) => {
+    return this.api.delete(`/workplaces/${id}`);
+  };
 }
 
 const workplaceService = new WorkplaceService();

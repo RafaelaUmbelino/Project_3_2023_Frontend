@@ -6,15 +6,15 @@ import workplaceService from "../services/workplace.service";
 function EditWorkplace() {
   
   const [description, setDescription] = useState("");
-  const [typeOfPlace, setTypeOfPlace] = useState(""); //como é que passo aqui as opções?
-  const [rating, setRating] = useState(Number);
-  const [paid, setPaid] = useState("");
+  // const [typeOfPlace, setTypeOfPlace] = useState(""); //como é que passo aqui as opções?
+  // const [rating, setRating] = useState(Number);
+  // const [paid, setPaid] = useState("");
 
   
   const handleDescription = (e) => setDescription(e.target.value);
-  const handleTypeOfPlace = (e) => setTypeOfPlace(e.target.value);
-  const handleRating = (e) => setRating(e.target.value);
-  const handlePaid = (e) => setPaid(e.target.value);
+  // const handleTypeOfPlace = (e) => setTypeOfPlace(e.target.value);
+  // const handleRating = (e) => setRating(e.target.value);
+  // const handlePaid = (e) => setPaid(e.target.value);
 
   const navigate = useNavigate();
 
@@ -50,8 +50,8 @@ function EditWorkplace() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = { typeOfPlace, rating, description, paid }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
-
+    const body = {description}; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
+//typeOfPlace, rating, , paid 
     try {
       await axios.put(
         `${import.meta.env.VITE_API_URL}/workplaces/${id}`,
@@ -85,6 +85,14 @@ function EditWorkplace() {
           value={description}
           onChange={handleDescription}
         />
+        {/* <label htmlFor="typeOfPlace">typeOfPlace</label>
+        <input
+          type="text"
+          name="typeOfPlace"
+          id="typeOfPlace"
+          value={typeOfPlace}
+          onChange={handleTypeOfPlace}
+        /> */}
 
         <button type="submit">Edit Workplace</button>
       </form>

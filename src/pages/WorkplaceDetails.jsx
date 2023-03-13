@@ -14,6 +14,7 @@ function WorkplaceDetails() {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/workplaces/${id}`
       );
+      console.log(id);
 
       setWorkplace(response.data); //setting the state
     } catch (error) {
