@@ -33,10 +33,10 @@ function Workplaces() {
   return (
     <section>
       <h1>Workplaces</h1> {/*Since Projects is an array, we can map */}
-      {workplaces.map((workplaces) => {
+      {workplaces.map((workplace) => {
         return (
-          <Link to={`/projects/${project._id}`} key={workplace._id}>
-            <h3>{project.title}</h3>
+          <Link to={`/workplaces/${workplace._id}`} key={workplace._id}>
+            <h3>{workplace.description}</h3>
           </Link>
         );
       })}

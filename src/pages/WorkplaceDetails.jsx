@@ -13,7 +13,7 @@ function WorkplaceDetails() {
     
         try {
           const response = await axios.get(
-            `${import.meta.env.VITE_API_URL}/api/projects/${id}`);
+            `${import.meta.env.VITE_API_URL}/workplaces/${id}`);
     
           setWorkplace(response.data); //setting the state
         } catch (error) {
@@ -31,7 +31,7 @@ function WorkplaceDetails() {
     {workplace && ( //So that this runs after project
         <>
     
-    <h1>{workplace.title}</h1>
+    <h1>{workplace.paid}</h1>
     <p>{workplace.description}</p>
 
     </>
@@ -48,7 +48,7 @@ function WorkplaceDetails() {
         )
      })}
 
-     {workplace &&  <Link to={`/projects/edit/${project._id}`}>Edit Project</Link>}
+     {workplace &&  <Link to={`/workplaces/${workplace._id}`}>Edit Workplace</Link>}
 
     </div>
   );

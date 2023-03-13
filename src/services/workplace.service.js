@@ -32,7 +32,7 @@ class WorkplaceService {
   // Get all Projects
 
   getAllWorkplaces = () => {
-    return this.api.get("/api/projects");
+    return this.api.get("/workplaces");
 
     //the return above is the same as: axios.get(`${import.meta.env.VITE_API_URL/api/projects}`)
   };
@@ -41,13 +41,13 @@ class WorkplaceService {
   //body refers to the object with title and description
 
   createWorkplaces = (body) => {
-    return this.api.post("/api/projects", body); //It's post because we're creating!
+    return this.api.post("/workplaces", body); //It's post because we're creating!
   };
 
   //To get a single project
 
   getSingleWorkplace = (id) => {
-    return this.api.get(`/api/projects/${id}`);
+    return this.api.get(`/workplaces/${id}`);
   };
 
   //getbyId / details

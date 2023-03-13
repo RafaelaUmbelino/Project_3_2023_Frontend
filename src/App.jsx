@@ -5,13 +5,14 @@ import {Routes, Route} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Workplaces from './pages/Workplace';
+import Workplaces from './pages/Workplaces';
 import WorkplaceDetails from './pages/WorkplaceDetails';
 import AddWorkplace from './pages/AddWorkplace';
 import EditWorkplace from './pages/EditWorkplace';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Private from './components/Private';
+import UserPage from './pages/UserPage';
 
 
 function App() {
@@ -43,29 +44,31 @@ function App() {
 
   <Route path="/" element = {<Home />} />
   
-  <Route path="/projects" element = {
+  <Route path="/workplaces" element = {
 
-  <Private>
+  // <Private>
 
      <Workplaces />
 
-  </Private>
+  // </Private>
 
   } 
 
   />
   
 
-  <Route path="/projects/:id" element={<WorkplaceDetails />} />
-  <Route path="/projects/new" element={<AddWorkplace />} /> 
-  <Route path="/projects/edit/:id" element={<EditWorkplace />} />
+  <Route path="/workplaces/:id" element={<WorkplaceDetails />} />
+  <Route path="/workplaces/new" element={<AddWorkplace />} /> 
+  <Route path="/workplaces/edit/:id" element={<EditWorkplace />} />
   <Route path="/signup" element={<Signup />} />
   <Route path="/login" element={<Login />} />
+  <Route paht="/user/:id" element= {<UserPage />} />
 
  </Routes>
    </div>
  )
 
 }
+
 
 export default App

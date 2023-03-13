@@ -18,7 +18,7 @@ function EditWorkplace() {
 
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/projects/${id}`
+        `${import.meta.env.VITE_API_URL}/workplaces/${id}`
       );
 
       setTitle(response.data.title); //setting the state
@@ -34,7 +34,7 @@ function EditWorkplace() {
 
   const deleteWorkplace = async () => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/projects/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/workplaces/${id}`);
       navigate("/workplaces");
     } catch (error) {
       console.log(error);
@@ -47,7 +47,7 @@ function EditWorkplace() {
 
     try {
       await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/projects/${id}`,
+        `${import.meta.env.VITE_API_URL}/workplaces/${id}`,
         body
       ); //needs the url to post to, and the information to send. - We get the request from projects.
       navigate(`/workplaces/${id}`); //So we go back to that project
@@ -61,14 +61,14 @@ function EditWorkplace() {
       <h1>Edit Project:</h1>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
+        {/* <label htmlFor="title">Title</label>
         <input
           type="text"
           name="title"
           id="title"
           value={title}
           onChange={handleTitle}
-        />
+        /> */}
 
         <label htmlFor="description">Description</label>
         <input
