@@ -5,7 +5,10 @@ import { Link, useParams } from "react-router-dom";
 function UserPage() {
   const [user, setUser] = useState(null);
 
-  const {id} = useParams()
+  // const {id} = useParams()
+  let currentUser = req.payload_id
+
+ 
 
   const getUser = async () => {
     //Here we get the information

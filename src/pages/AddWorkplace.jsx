@@ -50,9 +50,9 @@ function AddWorkplace() {
         description,
         paid,
       });
-      console.log(createdWorkplace)
+      console.log(createdWorkplace);
       // We replace: axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, body) for the one above //needs the url to post to, and the information to send. - We get the request from projects.
-      //navigate("/workplaces");
+      navigate("/workplaces");
 
       /* const storedToken = localStorage.getItem("authToken");
 

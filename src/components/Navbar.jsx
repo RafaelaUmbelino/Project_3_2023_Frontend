@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
+
 function Navbar() {
 
   const {loggedIn, user, logout} = useContext(AuthContext);
