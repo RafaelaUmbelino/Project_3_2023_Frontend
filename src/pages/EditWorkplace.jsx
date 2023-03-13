@@ -4,13 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
 
 function EditWorkplace() {
-  
   const [description, setDescription] = useState("");
-  const [typeOfPlace, setTypeOfPlace] = useState(""); //como é que passo aqui as opções?
+  const [typeOfPlace, setTypeOfPlace] = useState("");
   const [rating, setRating] = useState(Number);
   const [paid, setPaid] = useState("");
 
-  
   const handleDescription = (e) => setDescription(e.target.value);
   const handleTypeOfPlace = (e) => setTypeOfPlace(e.target.value);
   const handleRating = (e) => setRating(e.target.value);
@@ -53,10 +51,7 @@ function EditWorkplace() {
     const body = { typeOfPlace, rating, description, paid }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
 
     try {
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/workplaces/${id}`,
-        body
-      ); //needs the url to post to, and the information to send. - We get the request from projects.
+      await axios.put(`${import.meta.env.VITE_API_URL}/workplaces/${id}`, body); //needs the url to post to, and the information to send. - We get the request from projects.
       navigate(`/workplaces/${id}`); //So we go back to that project
     } catch (error) {
       console.log(error);
