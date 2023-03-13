@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import workplaceService from "../services/workplace.service";
 
 function EditWorkplace() {
-  const [title, setTitle] = useState("");
+  
   const [description, setDescription] = useState("");
+  const [typeOfPlace, setTypeOfPlace] = useState(""); //como é que passo aqui as opções?
+  const [rating, setRating] = useState(Number);
+  const [paid, setPaid] = useState("");
 
-  const handleTitle = (e) => setTitle(e.target.value);
+  
   const handleDescription = (e) => setDescription(e.target.value);
+  const handleTypeOfPlace = (e) => setTypeOfPlace(e.target.value);
+  const handleRating = (e) => setRating(e.target.value);
+  const handlePaid = (e) => setPaid(e.target.value);
 
   const navigate = useNavigate();
 
@@ -21,7 +28,7 @@ function EditWorkplace() {
         `${import.meta.env.VITE_API_URL}/workplaces/${id}`
       );
 
-      setTitle(response.data.title); //setting the state
+      //setting the state
       setDescription(response.data.description);
     } catch (error) {
       console.log(error); //We don't do res.json because it's already the frontend
@@ -43,7 +50,7 @@ function EditWorkplace() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = { title, description }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
+    const body = { typeOfPlace, rating, description, paid }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
 
     try {
       await axios.put(
@@ -58,7 +65,7 @@ function EditWorkplace() {
 
   return (
     <section>
-      <h1>Edit Project:</h1>
+      <h1>Edit Workplace:</h1>
 
       <form onSubmit={handleSubmit}>
         {/* <label htmlFor="title">Title</label>

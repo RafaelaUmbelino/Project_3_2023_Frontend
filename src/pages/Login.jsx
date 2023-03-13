@@ -30,7 +30,7 @@ function Login() {
             authenticateUser();
 
             console.log(response.data.authToken); //This is just to check if user is being created, if yes, add navigate.
-            navigate("/projects");
+            navigate("/workplaces");
             
         } catch (error) {
             console.log(error)

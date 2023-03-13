@@ -1,28 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
 
 // Define the PlaceType enum
 const PlaceType = {
-  coworkSpace: "Cowork Space",
-  coffeeShop: "Coffee Shop",
-  library: "Library/Bookstore",
+  coworkSpace: "cowork space",
+  coffeeShop: "coffee shop",
+  library: "library/bookstore",
 };
 
 // Define the Paid enum
 const Paid = {
-  yes: "Yes",
-  no: "No",
+  yes: "yes",
+  no: "no",
+  //  order: "order something",
 };
 
 // Define the Rating enum
 const Rating = {
-  stars1: "1",
-  stars2: "2",
-  stars3: "3",
-  stars4: "4",
-  stars5: "5",
+  stars1: 1,
+  stars2: 2,
+  stars3: 3,
+  stars4: 4,
+  stars5: 5,
 };
 
 function AddWorkplace() {
@@ -43,14 +44,32 @@ function AddWorkplace() {
     const body = { typeOfPlace, rating, description, paid }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
 
     try {
-      await WorkplaceService.createWorkplace({
+      const createdWorkplace = await workplaceService.createWorkplace({
         typeOfPlace,
         rating,
         description,
         paid,
       });
+      console.log(createdWorkplace)
       // We replace: axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, body) for the one above //needs the url to post to, and the information to send. - We get the request from projects.
-      navigate("/workplaces");
+      //navigate("/workplaces");
+
+      /* const storedToken = localStorage.getItem("authToken");
+
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/workplaces/new`,
+        { typeOfPlace, rating, description, paid },
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+
+      setTypeOfPlace(PlaceType.coworkSpace);
+      setRating(Rating.stars5);
+      setDescription("");
+      setPaid(Paid.no);
+
+      navigate(`/workplaces`); */
     } catch (error) {
       console.log(error);
     }
@@ -65,10 +84,9 @@ function AddWorkplace() {
         <select
           id="typeOfPlace"
           name="typeOfPlace"
-          value={typeOfPlace}
           onChange={handleTypeOfPlace}
         >
-          <option value={PlaceType.coworkSpace}>Restaurant</option>
+          <option value={PlaceType.coworkSpace}>Cowork Space</option>
           <option value={PlaceType.coffeeShop}>Coffee Shop</option>
           <option value={PlaceType.library}>Library/Bookstore</option>
         </select>
@@ -82,19 +100,15 @@ function AddWorkplace() {
           onChange={handleDescription}
         />
 
-        <label htmlFor="paid">Type of Place</label>
-        <select id="paid" name="paid" value={paid} onChange={handlePaid}>
+        <label htmlFor="paid">Paid</label>
+        <select id="paid" name="paid" onChange={handlePaid}>
           <option value={Paid.yes}>Yes</option>
           <option value={Paid.no}>No</option>
+          {/*  <option value={Paid.order}>Order Something</option> */}
         </select>
 
         <label htmlFor="rating">Rating</label>
-        <select
-          id="rating"
-          name="rating"
-          value={rating}
-          onChange={handleRating}
-        >
+        <select id="rating" name="rating" onChange={handleRating}>
           <option value={Rating.stars1}>1</option>
           <option value={Rating.stars2}>2</option>
           <option value={Rating.stars3}>3</option>

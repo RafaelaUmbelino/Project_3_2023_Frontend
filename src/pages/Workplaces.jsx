@@ -20,7 +20,7 @@ function Workplaces() {
 
       console.log(response.data); //To check what we're getting.
 
-      setProjects(response.data); //setting the state
+      setWorkplaces(response.data); //setting the state
     } catch (error) {
       console.log(error); //We don't do res.json because it's already the frontend
     }

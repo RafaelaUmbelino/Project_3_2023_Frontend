@@ -40,8 +40,8 @@ class WorkplaceService {
   //Create a project
   //body refers to the object with title and description
 
-  createWorkplaces = (body) => {
-    return this.api.post("/workplaces", body); //It's post because we're creating!
+  createWorkplace = (body) => {
+    return this.api.post("/workplaces/new", body); //It's post because we're creating!
   };
 
   //To get a single project

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
+import workplaceService from '../services/workplace.service';
 
 
 function WorkplaceDetails() {
@@ -37,6 +38,16 @@ function WorkplaceDetails() {
     </>
     )}
 
+     <h2>Workplace:</h2>
+     {workplace && workplace.description.map((description) => {
+        return (
+            <div key={workplace._id}>
+
+            <p>{description}</p>
+
+            </div>
+        )
+     })}
      <h2>Comments:</h2>
      {workplace && workplace.comments.map((comments) => {
         return (
