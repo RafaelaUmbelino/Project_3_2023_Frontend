@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import { AuthContext } from '../context/auth.context' 
 
 function WorkplaceDetails() {
   const [workplace, setWorkplace] = useState(null);
@@ -13,13 +12,8 @@ function WorkplaceDetails() {
 
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/workplaces/${id}`,
-    
-      {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      }
-    );
-      
+        `${import.meta.env.VITE_API_URL}/workplaces/${id}`
+      );
 
       setWorkplace(response.data); //setting the state
     } catch (error) {
@@ -35,8 +29,9 @@ function WorkplaceDetails() {
     <div>
       {workplace && ( //So that this runs after workplace
         <>
-          <h1>{workplace.paid}</h1>
-          <p>{workplace.description}</p>
+          <h3>{workplace.description}</h3>
+          <p>{workplace.typeOfPlace}</p>
+          <p>{workplace.paid}</p>
         </>
       )}
 
