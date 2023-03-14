@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import workplaceService from "../services/workplace.service";
 
 function UserPage() {
   const [user, setUser] = useState(null);
@@ -27,6 +28,20 @@ function UserPage() {
     getUser();
   }, []); //Dependency array []
 
+  const deleteFavorite = async (favoriteId) => {
+    try {
+        const deleteFavorite = await workplaceService.deleteFavorite(favoriteId);
+        console.log(deleteFavorite);
+        await getUser();
+      // const deleteFavorite = await workplaceService.deleteFavorite(id);
+      // console.log(deleteFavorite);
+      // navigate("/workplaces");
+    } catch (error) {
+      console.log(error);
+    }
+    
+  };
+
   return (
     <div>
       {user && ( //So that this runs after project
@@ -52,6 +67,7 @@ function UserPage() {
           return (
             <div key={favoriteWorkplaces._id}>
               <p>{favoriteWorkplaces.description}</p>
+              <button onClick={() => deleteFavorite(favoriteWorkplaces._id)}>Delete</button>
             </div>
           );
         })}

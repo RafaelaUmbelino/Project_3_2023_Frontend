@@ -60,11 +60,17 @@ class WorkplaceService {
     return this.api.delete(`/workplaces/${id}`);
   };
 
-  //Favorite
+  //Add Favorite
   addFavorite = (workplaceId) => {
     console.log(workplaceId);
-    return this.api.put(`/users/${workplaceId}/favorites`);
+    return this.api.put(`/${workplaceId}/favorites`);
   };
+
+  //Delete Favorite
+  deleteFavorite = (id) => {
+    return this.api.delete(`/favorites/${id}`);
+  };
+
 }
 
 const workplaceService = new WorkplaceService();

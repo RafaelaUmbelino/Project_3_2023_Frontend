@@ -24,6 +24,8 @@ function WorkplaceDetails() {
     getWorkplace();
   }, []); //Dependency array []
 
+  //Delete Workplace
+
   const deleteWorkplace = async () => {
     try {
       const deleteWorkplace = await workplaceService.deleteWorkplace(id);
@@ -33,6 +35,8 @@ function WorkplaceDetails() {
       console.log(error);
     }
   };
+
+  //Add to Favorites
 
   const addFavorite = async () => {
     try {
@@ -72,7 +76,7 @@ function WorkplaceDetails() {
 
       <button onClick={addFavorite}>Add to Favorites</button>
       <button onClick={deleteWorkplace}>Delete</button>
-      <button onClick={addFavorite}>Favorites</button>
+      
     </div>
   );
 }
