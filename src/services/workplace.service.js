@@ -61,6 +61,10 @@ class WorkplaceService {
   };
 
   //Favorite
+  addFavorite = (workplaceId) => {
+    console.log(workplaceId);
+    return this.api.put(`/users/${workplaceId}/favorites`);
+  };
 }
 
 const workplaceService = new WorkplaceService();

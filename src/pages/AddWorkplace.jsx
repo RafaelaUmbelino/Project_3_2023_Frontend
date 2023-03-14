@@ -27,10 +27,10 @@ const Rating = {
 };
 
 function AddWorkplace() {
-  const [typeOfPlace, setTypeOfPlace] = useState(PlaceType);
-  const [rating, setRating] = useState(Rating);
+  const [typeOfPlace, setTypeOfPlace] = useState(PlaceType.coworkSpace);
+  const [rating, setRating] = useState(Rating.stars5);
   const [description, setDescription] = useState("");
-  const [paid, setPaid] = useState(Paid);
+  const [paid, setPaid] = useState(Paid.no);
 
   const handleDescription = (e) => setDescription(e.target.value);
   const handleRating = (e) => setRating(e.target.value);
@@ -104,7 +104,7 @@ function AddWorkplace() {
         <select id="paid" name="paid" onChange={handlePaid}>
           <option value={Paid.yes}>Yes</option>
           <option value={Paid.no}>No</option>
-          {/*  <option value={Paid.order}>Order Something</option> */}
+          <option value={Paid.order}>Order Something</option>
         </select>
 
         <label htmlFor="rating">Rating</label>

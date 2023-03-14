@@ -6,23 +6,18 @@ import workplaceService from "../services/workplace.service";
 
 function WorkplaceDetails() {
   const [workplace, setWorkplace] = useState(null);
-
   const { id } = useParams();
 
   const navigate = useNavigate();
-
   const getWorkplace = async () => {
     //Here we get the information
-
     try {
       const response = await workplaceService.getSingleWorkplace(id);
-
       setWorkplace(response.data); //setting the state
     } catch (error) {
       console.log(error); //We don't do res.json because it's already the frontend
     }
   };
-
   useEffect(() => {
     getWorkplace();
   }, []); //Dependency array []
@@ -31,6 +26,17 @@ function WorkplaceDetails() {
     try {
       const deleteWorkplace = await workplaceService.deleteWorkplace(id);
       console.log(deleteWorkplace);
+      navigate("/workplaces");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addFavorite = async () => {
+    try {
+      const addFavorite = await workplaceService.addFavorite(id);
+      console.log(workplace);
+      console.log(addFavorite);
       navigate("/workplaces");
     } catch (error) {
       console.log(error);
@@ -62,9 +68,9 @@ function WorkplaceDetails() {
         <Link to={`/workplaces/edit/${workplace._id}`}>Edit Workplace</Link>
       )}
 
+      <button onClick={addFavorite}>Add to Favorites</button>
       <button onClick={deleteWorkplace}>Delete</button>
     </div>
   );
 }
-
 export default WorkplaceDetails;
