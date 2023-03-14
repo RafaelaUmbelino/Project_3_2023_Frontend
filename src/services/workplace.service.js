@@ -47,7 +47,7 @@ class WorkplaceService {
   //To get a single project
 
   getSingleWorkplace = (id) => {
-    return this.api.get(`/workplaces/${id}, body`);
+    return this.api.get(`/workplaces/${id}`);
   };
 
   //update
