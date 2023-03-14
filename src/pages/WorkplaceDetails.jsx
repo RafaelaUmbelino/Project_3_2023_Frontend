@@ -6,6 +6,7 @@ import workplaceService from "../services/workplace.service";
 
 function WorkplaceDetails() {
   const [workplace, setWorkplace] = useState(null);
+  const [user, setUser] = useState(null);
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -21,6 +22,21 @@ function WorkplaceDetails() {
   useEffect(() => {
     getWorkplace();
   }, []); //Dependency array []
+
+  //limiting the access to delete and edit buttons
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await axios.get(`/user/${userId}`);
+        setUser(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUser();
+    console.log(getUser);
+  }, [workplace]);
 
   const deleteWorkplace = async () => {
     try {
@@ -63,6 +79,14 @@ function WorkplaceDetails() {
             </div>
           );
         })}
+
+      {/* Restric user access */}
+      {/* {workplace && user && user._id === workplace.user._id && (
+        <>
+          <Link to={`/workplaces/edit/${workplace._id}`}>Edit Workplace</Link>
+          <button onClick={deleteWorkplace}>Delete</button>
+        </>
+      )} */}
 
       {workplace && (
         <Link to={`/workplaces/edit/${workplace._id}`}>Edit Workplace</Link>

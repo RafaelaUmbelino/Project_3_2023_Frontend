@@ -63,7 +63,12 @@ class WorkplaceService {
   //Favorite
   addFavorite = (workplaceId) => {
     console.log(workplaceId);
-    return this.api.put(`/users/${workplaceId}/favorites`);
+    return this.api.put(`/${workplaceId}/favorites`);
+  };
+
+  //Delete Favorite
+  deleteFavorite = (id) => {
+    return this.api.delete(`/favorites/${id}`);
   };
 }
 
