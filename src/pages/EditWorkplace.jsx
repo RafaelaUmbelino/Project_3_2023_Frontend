@@ -45,7 +45,7 @@ function EditWorkplace() {
     //Here we get the information
 
     try {
-      const response = await workplaceService.updateWorkplace
+      const response = await workplaceService.updateWorkplace;
       //axios.get(
       //   `${import.meta.env.VITE_API_URL}/workplaces/${id}`
       // );
@@ -55,7 +55,6 @@ function EditWorkplace() {
       setTypeOfPlace(response.data.typeOfPlace);
       setRating(response.data.rating);
       setPaid(response.data.paid);
-
     } catch (error) {
       console.log(error); //We don't do res.json because it's already the frontend
     }
@@ -77,8 +76,8 @@ function EditWorkplace() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = {description, typeOfPlace, rating, paid}; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
-//typeOfPlace, rating, , paid 
+    const body = { description, typeOfPlace, rating, paid }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
+    //typeOfPlace, rating, , paid
     try {
       await workplaceService.updateWorkplace(id, body);
       // axios.put(`${import.meta.env.VITE_API_URL}/workplaces/${id}`, body); //needs the url to post to, and the information to send. - We get the request from projects.

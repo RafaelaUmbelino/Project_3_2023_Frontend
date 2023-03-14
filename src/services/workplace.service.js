@@ -50,7 +50,7 @@ class WorkplaceService {
     return this.api.get(`/workplaces/${id}`);
   };
 
-  //update
+  //Edit workplace
   updateWorkplace = (id, body) => {
     return this.api.put(`/workplaces/${id}`, body);
   };

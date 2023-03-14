@@ -14,7 +14,7 @@ const PlaceType = {
 const Paid = {
   yes: "yes",
   no: "no",
-  //  order: "order something",
+  order: "order something",
 };
 
 // Define the Rating enum

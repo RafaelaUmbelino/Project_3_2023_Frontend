@@ -40,7 +40,7 @@ function WorkplaceDetails() {
   return (
     <div>
       {workplace && ( //So that this runs after workplace
-      <>
+        <>
           <h3>Description: {workplace.description}</h3>
           <p>Type: {workplace.typeOfPlace}</p>
           <p>Paid: {workplace.paid}</p>
