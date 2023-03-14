@@ -6,8 +6,11 @@ import workplaceService from "../services/workplace.service";
 
 function WorkplaceDetails() {
   const [workplace, setWorkplace] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const { id } = useParams();
+
+  console.log(id);
 
   const navigate = useNavigate();
 
@@ -37,6 +40,27 @@ function WorkplaceDetails() {
     }
   };
 
+  const addFavorite = async () => {
+    try {
+      const addFavorite = await workplaceService.addFavorite(id, userId);
+      setUserid(addFavorite);
+      console.log(addFavorite);
+      navigate("/workplaces");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // const addFavorite = async (userId, workplaceId) => {
+  //   try {
+  //     const response = await axios.post(`/users/${workplaceId}/${userId}/favorites`);
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log(error);
+     
+  //   }
+  // };
+
   return (
     <div>
       {workplace && ( //So that this runs after workplace
@@ -63,6 +87,7 @@ function WorkplaceDetails() {
       )}
 
       <button onClick={deleteWorkplace}>Delete</button>
+      <button onClick={addFavorite}>Favorites</button>
     </div>
   );
 }

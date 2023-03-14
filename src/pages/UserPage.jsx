@@ -51,7 +51,7 @@ function UserPage() {
         user.favoriteWorkplaces.map((favoriteWorkplaces) => {
           return (
             <div key={favoriteWorkplaces._id}>
-              <p>{favoriteWorkplaces}</p>
+              <p>{favoriteWorkplaces.description}</p>
             </div>
           );
         })}

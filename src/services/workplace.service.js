@@ -61,6 +61,9 @@ class WorkplaceService {
   };
 
   //Favorite
+  addFavorite = (workplaceId, userId, body) => {
+    return this.api.post(`/users/${workplaceId}/${userId}/favorites`, body);
+  }
 }
 
 const workplaceService = new WorkplaceService();
