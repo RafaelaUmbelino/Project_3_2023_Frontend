@@ -16,6 +16,7 @@ function Navbar() {
         <span>Hello {user.name}</span>
       <Link to="/workplaces"> Workplaces </Link>  
       <Link to="/workplaces/new"> Add Workplace </Link>
+      <Link to={`/user/${user._id}`}> User </Link>
       <button onClick={logout}>Logout</button>
       </>
 

@@ -9,10 +9,11 @@ import Workplaces from "./pages/Workplaces";
 import WorkplaceDetails from "./pages/WorkplaceDetails";
 import AddWorkplace from "./pages/AddWorkplace";
 import EditWorkplace from "./pages/EditWorkplace";
+import UserPage from "./pages/UserPage";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./components/Private";
-import UserPage from "./pages/UserPage";
+
 
 function App() {
   //  const autoCompleteRef = useRef();
@@ -56,7 +57,7 @@ function App() {
   <Route path="/workplaces/edit/:id" element={<EditWorkplace />} />
   <Route path="/signup" element={<Signup />} />
   <Route path="/login" element={<Login />} />
-  <Route paht="/user/:id" element= {<UserPage />} />
+  <Route path="/user/:id" element= {<UserPage />} />
 
  </Routes>
    </div>
