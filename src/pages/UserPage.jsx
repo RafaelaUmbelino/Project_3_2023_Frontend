@@ -5,10 +5,8 @@ import { Link, useParams } from "react-router-dom";
 function UserPage() {
   const [user, setUser] = useState(null);
 
-  const {id} = useParams()
-  // let currentUser = req.payload_id
-
- 
+  const { id } = useParams();
+  /* let currentUser = req.payload_id; */
 
   const getUser = async () => {
     //Here we get the information
@@ -33,11 +31,19 @@ function UserPage() {
     <div>
       {user && ( //So that this runs after project
         <>
-        <h3> {user.name}</h3>
-        
-        
+          <h1>Hello, {user.name}</h1>
         </>
       )}
+
+      <h2>Created:</h2>
+      {user &&
+        user.createdWorkplaces.map((workplace) => {
+          return (
+            <Link to={`/workplaces/${workplace._id}`} key={workplace._id}>
+              <h3>{workplace.description}</h3>
+            </Link>
+          );
+        })}
 
       <h2>Favorites:</h2>
       {user &&
@@ -55,14 +61,6 @@ function UserPage() {
         user.userComments.map((userComments) => {
           return <div key={userComments._id}></div>;
         })}
-
-      <h2>Created:</h2>
-      {user &&
-        user.createdWorkplaces.map((createdWorkplaces) => {
-          return <div key={createdWorkplaces._id}></div>;
-        })}
-
-  
     </div>
   );
 }
