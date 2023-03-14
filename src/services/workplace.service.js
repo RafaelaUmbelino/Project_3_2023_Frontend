@@ -33,7 +33,7 @@ class WorkplaceService {
 
   getAllWorkplaces = () => {
     return this.api.get("/workplaces");
-    // 
+    //
     //the return above is the same as: axios.get(`${import.meta.env.VITE_API_URL/api/projects}`)
   };
 
@@ -55,10 +55,12 @@ class WorkplaceService {
     return this.api.put(`/workplaces/${id}`, body);
   };
 
-  //delete
+  //Delete
   deleteWorkplace = (id) => {
     return this.api.delete(`/workplaces/${id}`);
   };
+
+  //Favorite
 }
 
 const workplaceService = new WorkplaceService();

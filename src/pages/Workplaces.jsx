@@ -29,13 +29,10 @@ function Workplaces() {
   useEffect(() => {
     getWorkplaces(); //Here we call the function.
   }, []);
-  
-
 
   return (
     <section>
-  
-      <h1>Workplaces</h1> {/*Since Projects is an array, we can map */}
+      <h1>Workplaces</h1> {/*Since Workplaces is an array, we can map */}
       {workplaces.map((workplace) => {
         return (
           <Link to={`/workplaces/${workplace._id}`} key={workplace._id}>

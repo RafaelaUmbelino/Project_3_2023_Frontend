@@ -45,23 +45,18 @@ function App() {
             // <Private>
 
             <Workplaces />
+          }
+        />
 
-  } 
-
-  />
-  
-
-  <Route path="/workplaces/:id" element={<WorkplaceDetails />} />
-  <Route path="/workplaces/new" element={<AddWorkplace />} /> 
-  <Route path="/workplaces/edit/:id" element={<EditWorkplace />} />
-  <Route path="/signup" element={<Signup />} />
-  <Route path="/login" element={<Login />} />
-  <Route paht="/user/:id" element= {<UserPage />} />
-
- </Routes>
-   </div>
- )
-
+        <Route path="/workplaces/:id" element={<WorkplaceDetails />} />
+        <Route path="/workplaces/new" element={<AddWorkplace />} />
+        <Route path="/workplaces/edit/:id" element={<EditWorkplace />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/user/:id" element={<UserPage />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
