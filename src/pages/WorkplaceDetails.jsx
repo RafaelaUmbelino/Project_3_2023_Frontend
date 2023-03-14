@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import workplaceService from "../services/workplace.service";
 
 function WorkplaceDetails() {
   const [workplace, setWorkplace] = useState(null);
@@ -14,9 +15,7 @@ function WorkplaceDetails() {
     //Here we get the information
 
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/workplaces/${id}`
-      );
+      const response = await workplaceService.getSingleWorkplace(id);
 
       setWorkplace(response.data); //setting the state
     } catch (error) {
@@ -30,7 +29,7 @@ function WorkplaceDetails() {
 
   const deleteWorkplace = async () => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/workplaces/${id}`);
+      const deleteWorkplace = await workplaceService.deleteWorkplace(id);
       console.log(deleteWorkplace);
       navigate("/workplaces");
     } catch (error) {
@@ -42,9 +41,10 @@ function WorkplaceDetails() {
     <div>
       {workplace && ( //So that this runs after workplace
         <>
-          <h3>{workplace.description}</h3>
-          <p>{workplace.typeOfPlace}</p>
-          <p>{workplace.paid}</p>
+          <h3>Description: {workplace.description}</h3>
+          <p>Type: {workplace.typeOfPlace}</p>
+          <p>Paid: {workplace.paid}</p>
+          <p>Rating: {workplace.rating}</p>
         </>
       )}
 
@@ -59,7 +59,7 @@ function WorkplaceDetails() {
         })}
 
       {workplace && (
-        <Link to={`/workplaces/${workplace._id}`}>Edit Workplace</Link>
+        <Link to={`/workplaces/edit/${workplace._id}`}>Edit Workplace</Link>
       )}
 
       <button onClick={deleteWorkplace}>Delete</button>

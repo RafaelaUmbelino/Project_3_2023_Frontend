@@ -14,7 +14,7 @@ const PlaceType = {
 const Paid = {
   yes: "yes",
   no: "no",
-  //  order: "order something",
+  order: "order something",
 };
 
 // Define the Rating enum
@@ -27,10 +27,10 @@ const Rating = {
 };
 
 function AddWorkplace() {
-  const [typeOfPlace, setTypeOfPlace] = useState(PlaceType.coworkSpace);
-  const [rating, setRating] = useState(Rating.stars5);
+  const [typeOfPlace, setTypeOfPlace] = useState(PlaceType);
+  const [rating, setRating] = useState(Rating);
   const [description, setDescription] = useState("");
-  const [paid, setPaid] = useState(Paid.no);
+  const [paid, setPaid] = useState(Paid);
 
   const handleDescription = (e) => setDescription(e.target.value);
   const handleRating = (e) => setRating(e.target.value);
