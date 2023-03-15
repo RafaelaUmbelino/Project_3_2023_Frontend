@@ -10,7 +10,8 @@ function Navbar() {
   const { loggedIn, user, logout } = useContext(AuthContext);
 
   return (
-    <nav>
+    <>
+    <nav id="main-menu">
       <Link to="/"> Home </Link>
 
       {loggedIn ? (
@@ -28,6 +29,32 @@ function Navbar() {
         </>
       )}
     </nav>
+
+  <input type="checkbox" id="hamburger-input" className="burger-shower" />
+<label id="hamburger-menu" htmlFor="hamburger-input">
+  <nav id="sidebar-menu">
+  <h3>Menu</h3>
+      <Link to="/"> Home </Link>
+
+      {loggedIn ? (
+        <>
+          <span>Hello {user.name}</span>
+          <Link to="/workplaces"> Workplaces </Link>
+          <Link to="/workplaces/new"> Add Workplace </Link>
+          <Link to={`/user/${user._id}`}> User </Link>
+          <button onClick={logout}>Logout</button>
+        </>
+      ) : (
+        <>
+          <Link to="/signup"> Signup </Link>
+          <Link to="/login"> Login </Link>
+        </>
+      )}
+    </nav>
+    </label>
+
+    <div className="overlay"></div>
+    </>
   );
 }
 

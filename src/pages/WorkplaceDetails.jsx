@@ -50,22 +50,6 @@ function WorkplaceDetails() {
     }
   };
 
-  // const [hasCreatedWorkplace, setHasCreatedWorkplace] = useState(false);
-
-  // useEffect(() => {
-  //   const checkIfUserHasCreatedWorkplace = async () => {
-  //     try {
-  //       const user = await userService.getCurrentUser();
-  //       const hasCreated = user.createdWorkplaces.some((cw) => cw._id === id);
-  //       setHasCreatedWorkplace(hasCreated);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   checkIfUserHasCreatedWorkplace();
-  // }, [id]);
-
   const [description, setDescription] = useState("");
 
   const handleComment = (e) => setDescription(e.target.value);
@@ -100,6 +84,7 @@ function WorkplaceDetails() {
           <p>Type: {workplace.typeOfPlace}</p>
           <p>Paid: {workplace.paid}</p>
           <p>Rating: {workplace.rating}</p>
+          <img src={workplace.imageUrl} alt="workplace" width="200" />
         </>
       )}
 

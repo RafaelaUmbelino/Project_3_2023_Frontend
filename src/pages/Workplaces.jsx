@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
+import Searchbar from "../components/SearchBar";
 
 //css
 
@@ -32,6 +33,9 @@ function Workplaces() {
 
   return (
     <section>
+
+    <Searchbar />
+    
       <h1>Workplaces</h1> {/*Since Workplaces is an array, we can map */}
       {workplaces.map((workplace) => {
         return (

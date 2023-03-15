@@ -28,14 +28,22 @@ const Rating = {
 
 function EditWorkplace() {
   const [typeOfPlace, setTypeOfPlace] = useState(PlaceType.coworkSpace);
-  const [rating, setRating] = useState(Rating.stars1);
+  const [rating, setRating] = useState(Rating.stars5);
   const [description, setDescription] = useState("");
-  const [paid, setPaid] = useState(Paid.yes);
+  const [paid, setPaid] = useState(Paid.no);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [link, setLink] = useState("");
+  /* const [imageUrl, setImageUrl] = useState(""); */
 
   const handleDescription = (e) => setDescription(e.target.value);
-  const handleTypeOfPlace = (e) => setTypeOfPlace(e.target.value);
   const handleRating = (e) => setRating(e.target.value);
+  const handleTypeOfPlace = (e) => setTypeOfPlace(e.target.value);
   const handlePaid = (e) => setPaid(e.target.value);
+  const handleName = (e) => setName(e.target.value);
+  const handleAddress = (e) => setAddress(e.target.value);
+  const handleLink = (e) => setLink(e.target.value);
+  /* const handleImageUrl = (e) => setImageUrl(e.target.value); */
 
   const navigate = useNavigate();
 
@@ -54,7 +62,9 @@ function EditWorkplace() {
       setDescription(response.data.description);
       setTypeOfPlace(response.data.typeOfPlace);
       setRating(response.data.rating);
-      setPaid(response.data.paid);
+      setName(response.data.name);
+      setAddress(response.data.address);
+      setLink(response.data.link);
     } catch (error) {
       console.log(error); //We don't do res.json because it's already the frontend
     }
@@ -76,7 +86,16 @@ function EditWorkplace() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = { description, typeOfPlace, rating, paid }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
+    const body = {
+      name,
+      address,
+      link,
+      typeOfPlace,
+      rating,
+      description,
+      paid,
+      /* imageUrl, */
+    }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
     //typeOfPlace, rating, , paid
     try {
       await workplaceService.updateWorkplace(id, body);
@@ -88,11 +107,37 @@ function EditWorkplace() {
   };
 
   return (
-
-      <section>
+    <section>
       <h1>Edit Workplace:</h1>
 
       <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          value={name}
+          onChange={handleName}
+        />
+
+        <label htmlFor="address">Address</label>
+        <input
+          type="text"
+          name="address"
+          id="address"
+          value={address}
+          onChange={handleAddress}
+        />
+
+        <label htmlFor="link">Link</label>
+        <input
+          type="text"
+          name="link"
+          id="link"
+          value={link}
+          onChange={handleLink}
+        />
+
         <label htmlFor="typeOfPlace">Type of Place</label>
         <select
           id="typeOfPlace"
@@ -118,7 +163,6 @@ function EditWorkplace() {
           <option value={Paid.yes}>Yes</option>
           <option value={Paid.no}>No</option>
           <option value={Paid.order}>Order Something</option>
-          {/*  <option value={Paid.order}>Order Something</option> */}
         </select>
 
         <label htmlFor="rating">Rating</label>

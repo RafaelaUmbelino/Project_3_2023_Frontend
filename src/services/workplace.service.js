@@ -78,6 +78,10 @@ class WorkplaceService {
     return this.api.post(`/comment/${id}`, body); //It's post because we're creating!
   };
 
+   uploadImage = (file) => {
+    return this.api.post("/upload", file)
+  };
+
 
 
 }
