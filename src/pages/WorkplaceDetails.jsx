@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
+import { AuthContext } from "../context/auth.context";
 
 function WorkplaceDetails() {
   const [workplace, setWorkplace] = useState(null);
-  const [user, setUser] = useState(null);
   const { id } = useParams();
+  const { tokenUpdate } = useContext(AuthContext);
+  //console.log(id);
 
   const navigate = useNavigate();
   const getWorkplace = async () => {
@@ -23,20 +25,7 @@ function WorkplaceDetails() {
     getWorkplace();
   }, []); //Dependency array []
 
-  //limiting the access to delete and edit buttons
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const response = await axios.get(`/user/${userId}`);
-        setUser(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getUser();
-    console.log(getUser);
-  }, [workplace]);
+  //Delete Workplace
 
   const deleteWorkplace = async () => {
     try {
@@ -47,6 +36,8 @@ function WorkplaceDetails() {
       console.log(error);
     }
   };
+
+  //Add to Favorites
 
   const addFavorite = async () => {
     try {
@@ -59,14 +50,45 @@ function WorkplaceDetails() {
     }
   };
 
+  const [description, setDescription] = useState("");
+
+  const handleComment = (e) => setDescription(e.target.value);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // const body = { description, user  }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
+
+    try {
+      const storedToken = localStorage.getItem("authToken");
+
+      const createdComment = await axios.post(
+        `${import.meta.env.VITE_API_URL}/comment/${id}`,
+        { description },
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      );
+      setDescription("");
+      tokenUpdate();
+      console.log(createdComment);
+      // We replace: axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, body) for the one above //needs the url to post to, and the information to send. - We get the request from projects.
+      navigate(0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(workplace);
   return (
     <div>
       {workplace && ( //So that this runs after workplace
         <>
+          <a href={workplace.link} target="_blank" rel="noreferrer">
+            <h3>Name: {workplace.name}</h3>
+          </a>
           <h3>Description: {workplace.description}</h3>
+          <p>Address: {workplace.address}</p>
           <p>Type: {workplace.typeOfPlace}</p>
           <p>Paid: {workplace.paid}</p>
           <p>Rating: {workplace.rating}</p>
+          <img src={workplace.imageUrl} alt="workplace" width="200" />
         </>
       )}
 
@@ -76,24 +98,31 @@ function WorkplaceDetails() {
           return (
             <div key={comments._id}>
               <p>{comments.description}</p>
+              <p>{comments.user.email}</p>
+              <hr />
             </div>
           );
         })}
 
-      {/* Restric user access */}
-      {/* {workplace && user && user._id === workplace.user._id && (
+      {workplace && (
         <>
           <Link to={`/workplaces/edit/${workplace._id}`}>Edit Workplace</Link>
+          <button onClick={addFavorite}>Add to Favorites</button>
           <button onClick={deleteWorkplace}>Delete</button>
         </>
-      )} */}
-
-      {workplace && (
-        <Link to={`/workplaces/edit/${workplace._id}`}>Edit Workplace</Link>
       )}
 
-      <button onClick={addFavorite}>Add to Favorites</button>
-      <button onClick={deleteWorkplace}>Delete</button>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="comment">Comment</label>
+        <input
+          type="text"
+          name="comment"
+          id="comment"
+          value={description}
+          onChange={handleComment}
+        />
+        <button type="submit">Add Comment</button>
+      </form>
     </div>
   );
 }

@@ -60,7 +60,7 @@ class WorkplaceService {
     return this.api.delete(`/workplaces/${id}`);
   };
 
-  //Favorite
+  //Add Favorite
   addFavorite = (workplaceId) => {
     console.log(workplaceId);
     return this.api.put(`/${workplaceId}/favorites`);
@@ -69,6 +69,17 @@ class WorkplaceService {
   //Delete Favorite
   deleteFavorite = (id) => {
     return this.api.delete(`/favorites/${id}`);
+  };
+
+  //Add Comment
+  addComment = (id, body) => {
+    console.log("this is the id", id);
+    console.log("this is the body", body);
+    return this.api.post(`/comment/${id}`, body); //It's post because we're creating!
+  };
+
+  uploadImage = (file) => {
+    return this.api.post("/upload", file);
   };
 }
 

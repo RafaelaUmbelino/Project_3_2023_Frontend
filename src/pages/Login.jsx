@@ -1,73 +1,76 @@
-import React, {useState, useContext} from 'react'
-import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../context/auth.context';
-
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 function Login() {
-    //Pieces of state
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  //Pieces of state
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    //Handles
+  //Handles
 
-    const handleEmail = (e) => setEmail(e.target.value)
-    const handlePassword = (e) => setPassword(e.target.value)
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
 
-    const {authenticateUser} = useContext(AuthContext) //Deconstruct authenticate user.
+  const { authenticateUser } = useContext(AuthContext); //Deconstruct authenticate user.
 
-    //Handle for the submit button
+  //Handle for the submit button
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        try {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/auth/login`,
+        { email, password }
+      ); //We need to send the necessary info.
 
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, {email, password}); //We need to send the necessary info. 
-            
-            localStorage.setItem("authToken", response.data.authToken); //This stores the users login.
+      localStorage.setItem("authToken", response.data.authToken); //This stores the users login.
 
-            authenticateUser();
+      authenticateUser();
 
-            console.log(response.data.authToken); //This is just to check if user is being created, if yes, add navigate.
-            navigate("/workplaces");
-            
-        } catch (error) {
-            console.log(error)
-        }
+      console.log(response.data.authToken); //This is just to check if user is being created, if yes, add navigate.
+      navigate("/workplaces");
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    //To be redirected to login after signup
+  //To be redirected to login after signup
 
-    const navigate = useNavigate()
-    
-
+  const navigate = useNavigate();
 
   return (
     <section>
-    
-    <h1>Login</h1>
-    
-    <form onSubmit={handleSubmit}>
+      <h1>Login</h1>
 
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value={email}
+          onChange={handleEmail}
+        />
 
-    <label htmlFor="email">Email</label>
-    <input type="email" name= "email" id="email" value= {email} onChange= {handleEmail} />
-  
-    <label htmlFor="password">Password</label>
-    <input type="password" name= "password" id="password" value= {password} onChange= {handlePassword} />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          value={password}
+          onChange={handlePassword}
+        />
 
-    <button type="submit">Login</button>
+        <button type="submit">Login</button>
+      </form>
 
-    </form>
-
-    <p>Don't have an account?</p>
-    <Link to="/signup">Signup</Link>
-    
+      <p>Don't have an account?</p>
+      <Link to="/signup">Signup</Link>
     </section>
-
-    
-  )
+  );
 }
 
-export default Login
+export default Login;

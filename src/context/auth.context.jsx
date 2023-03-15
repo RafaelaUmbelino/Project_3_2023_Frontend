@@ -29,7 +29,6 @@ function AuthWrapper(props) {
             },
           }
         );
-       
 
         //Here we know that the response is ok, so we can update the states.
 
@@ -67,11 +66,27 @@ function AuthWrapper(props) {
     authenticateUser();
   }, []);
 
+  const tokenUpdate = async () => {
+    try {
+      const storedToken = localStorage.getItem("authToken");
+
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/auth/updateToken`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+      console.log("tokenUpdate", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //Grabs the context and provides it through the whole app.
 
   return (
     <AuthContext.Provider
-      value={{ loggedIn, user, loading, authenticateUser, logout }}
+      value={{ loggedIn, user, loading, authenticateUser, logout, tokenUpdate }}
     >
       {props.children}
     </AuthContext.Provider>

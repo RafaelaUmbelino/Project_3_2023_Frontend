@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
-
+import service from "../services/service";
 // Define the PlaceType enum
 const PlaceType = {
   coworkSpace: "cowork space",
@@ -31,27 +31,68 @@ function AddWorkplace() {
   const [rating, setRating] = useState(Rating.stars5);
   const [description, setDescription] = useState("");
   const [paid, setPaid] = useState(Paid.no);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [link, setLink] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const handleDescription = (e) => setDescription(e.target.value);
   const handleRating = (e) => setRating(e.target.value);
   const handleTypeOfPlace = (e) => setTypeOfPlace(e.target.value);
   const handlePaid = (e) => setPaid(e.target.value);
+  const handleName = (e) => setName(e.target.value);
+  const handleAddress = (e) => setAddress(e.target.value);
+  const handleLink = (e) => setLink(e.target.value);
+  /* const handleImageUrl = (e) => setImageUrl(e.target.value); */
 
   const navigate = useNavigate();
 
+  // ******** this method handles the file upload ********
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    service
+      .uploadImage(uploadData)
+      .then((response) => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setImageUrl(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = { typeOfPlace, rating, description, paid }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
+    const body = {
+      name,
+      address,
+      link,
+      typeOfPlace,
+      rating,
+      description,
+      paid,
+      imageUrl,
+    }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
 
     try {
       const createdWorkplace = await workplaceService.createWorkplace({
+        name,
+        address,
+        link,
         typeOfPlace,
         rating,
         description,
         paid,
+        imageUrl,
       });
       console.log(createdWorkplace);
-      // We replace: axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, body) for the one above //needs the url to post to, and the information to send. - We get the request from projects.
+
       navigate("/workplaces");
 
       /* const storedToken = localStorage.getItem("authToken");
@@ -80,6 +121,38 @@ function AddWorkplace() {
       <h1>Create Workplace:</h1>
 
       <form onSubmit={handleSubmit}>
+        <div class="row">
+          <div class="col">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={handleName}
+            />
+          </div>
+          <div class="col">
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              value={address}
+              onChange={handleAddress}
+            />
+          </div>
+        </div>
+
+        <label htmlFor="link">Link</label>
+        <input
+          type="text"
+          name="link"
+          id="link"
+          value={link}
+          onChange={handleLink}
+        />
+
         <label htmlFor="typeOfPlace">Type of Place</label>
         <select
           id="typeOfPlace"
@@ -115,6 +188,8 @@ function AddWorkplace() {
           <option value={Rating.stars4}>4</option>
           <option value={Rating.stars5}>5</option>
         </select>
+
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
 
         <button type="submit">Add Workplace</button>
       </form>
