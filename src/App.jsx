@@ -13,27 +13,14 @@ import UserPage from "./pages/UserPage";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./components/Private";
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 
 function App() {
-  //  const autoCompleteRef = useRef();
-  //  const inputRef = useRef();
-  //  const options = {
-  //   componentRestrictions: { country: "PT" },
-  //   fields: ["address_components", "geometry", "icon", "name"],
-  //   types: ["establishment"]
-  //  };
-  //  useEffect(() => {
-  //   autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-  //    inputRef.current,
-  //    options
-  //   );
-  //  }, []);
 
   return (
     <div className="App">
-      {/* //        <label>enter address :</label>
-//   <input ref={inputRef} /> */}
 
       <Navbar />
 

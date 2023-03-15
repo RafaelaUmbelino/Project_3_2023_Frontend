@@ -80,7 +80,11 @@ function WorkplaceDetails() {
     <div>
       {workplace && ( //So that this runs after workplace
         <>
+          <a href={workplace.link} target="_blank" rel="noreferrer">
+            <h3>Name: {workplace.name}</h3>
+          </a>
           <h3>Description: {workplace.description}</h3>
+          <p>Address: {workplace.address}</p>
           <p>Type: {workplace.typeOfPlace}</p>
           <p>Paid: {workplace.paid}</p>
           <p>Rating: {workplace.rating}</p>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
-
+import service from "../services/service"
 // Define the PlaceType enum
 const PlaceType = {
   coworkSpace: "cowork space",

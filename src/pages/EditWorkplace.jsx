@@ -53,7 +53,7 @@ function EditWorkplace() {
     //Here we get the information
 
     try {
-      const response = await workplaceService.updateWorkplace;
+      const response = await workplaceService.getSingleWorkplace(id);
       //axios.get(
       //   `${import.meta.env.VITE_API_URL}/workplaces/${id}`
       // );
@@ -177,45 +177,44 @@ function EditWorkplace() {
         <button type="submit">Edit Workplace</button>
       </form>
     </section>
-       
-// {/* 
-//       <form onSubmit={handleSubmit}>
-//         <label htmlFor="description">Description</label>
-//         <input
-//           type="text"
-//           name="description"
-//           id="description"
-//           value={description}
-//           onChange={handleDescription}
-//         />
 
-//         <label htmlFor="typeOfPlace">TypeOfPlace</label>
-//         <input
-//           type="text"
-//           name="typeOfPlace"
-//           id="typeOfPlace"
-//           value={typeOfPlace}
-//           onChange={handleTypeOfPlace}
-//         />
+    // {/*
+    //       <form onSubmit={handleSubmit}>
+    //         <label htmlFor="description">Description</label>
+    //         <input
+    //           type="text"
+    //           name="description"
+    //           id="description"
+    //           value={description}
+    //           onChange={handleDescription}
+    //         />
 
-//         <label htmlFor="rating">Rating</label>
-//         <input
-//           type="text"
-//           name="rating"
-//           id="rating"
-//           value={rating}
-//           onChange={handleRating}
-//         />
+    //         <label htmlFor="typeOfPlace">TypeOfPlace</label>
+    //         <input
+    //           type="text"
+    //           name="typeOfPlace"
+    //           id="typeOfPlace"
+    //           value={typeOfPlace}
+    //           onChange={handleTypeOfPlace}
+    //         />
 
-//         <label htmlFor="paid">Paid</label>
-//         <input
-//           type="text"
-//           name="paid"
-//           id="paid"
-//           value={paid}
-//           onChange={handlePaid}
-//         /> */}
+    //         <label htmlFor="rating">Rating</label>
+    //         <input
+    //           type="text"
+    //           name="rating"
+    //           id="rating"
+    //           value={rating}
+    //           onChange={handleRating}
+    //         />
 
+    //         <label htmlFor="paid">Paid</label>
+    //         <input
+    //           type="text"
+    //           name="paid"
+    //           id="paid"
+    //           value={paid}
+    //           onChange={handlePaid}
+    //         /> */}
   );
 }
 
