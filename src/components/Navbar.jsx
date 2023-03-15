@@ -1,85 +1,104 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-/* import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar'; */
+
+import {
+  MDBNavbar,
+  MDBContainer,
+  MDBIcon,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarToggler,
+  MDBNavbarBrand,
+  MDBCollapse,
+} from "mdb-react-ui-kit";
 
 function Navbar() {
   const { loggedIn, user, logout } = useContext(AuthContext);
+  const [showNavColor, setShowNavColor] = useState(false);
 
   return (
-    <>
-    <nav id="main-menu">
-      <Link to="/"> Home </Link>
-
-      {loggedIn ? (
-        <>
-          <span>Hello {user.name}</span>
-          <Link to="/workplaces"> Workplaces </Link>
-          <Link to="/workplaces/new"> Add Workplace </Link>
-          <Link to={`/user/${user._id}`}> User </Link>
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
-        <>
-          <Link to="/signup"> Signup </Link>
-          <Link to="/login"> Login </Link>
-        </>
-      )}
-    </nav>
-
-  <input type="checkbox" id="hamburger-input" className="burger-shower" />
-<label id="hamburger-menu" htmlFor="hamburger-input">
-  <nav id="sidebar-menu">
-  <h3>Menu</h3>
-      <Link to="/"> Home </Link>
-
-      {loggedIn ? (
-        <>
-          <span>Hello {user.name}</span>
-          <Link to="/workplaces"> Workplaces </Link>
-          <Link to="/workplaces/new"> Add Workplace </Link>
-          <Link to={`/user/${user._id}`}> User </Link>
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
-        <>
-          <Link to="/signup"> Signup </Link>
-          <Link to="/login"> Login </Link>
-        </>
-      )}
-    </nav>
-    </label>
-
-    <div className="overlay"></div>
-    </>
+    <MDBNavbar expand="lg" dark bgColor="dark">
+      <MDBContainer fluid>
+        <MDBNavbarBrand href="/">TITLE</MDBNavbarBrand>
+        <MDBNavbarToggler
+          type="button"
+          data-target="#navbarColor02"
+          aria-controls="navbarColor02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={() => setShowNavColor(!showNavColor)}
+        >
+          <MDBIcon icon="bars" fas />
+        </MDBNavbarToggler>
+        <MDBCollapse show={showNavColor} navbar>
+          <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+            <MDBNavbarItem className="active">
+              <MDBNavbarLink aria-current="page" href="/home">
+                Home
+              </MDBNavbarLink>
+            
+            </MDBNavbarItem>
+            {/* <MDBNavbarItem>
+              <MDBNavbarLink>{`Hello ${user.name}`}</MDBNavbarLink>
+            </MDBNavbarItem> */}
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/workplaces">Workplaces</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/workplaces/new">
+                Add Workplaces
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/">Profile</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink  onClick={logout} >Logout</MDBNavbarLink>
+            </MDBNavbarItem>
+           
+           <MDBNavbarItem>
+              <MDBNavbarLink href="/signup">Signup</MDBNavbarLink>
+            </MDBNavbarItem>
+           <MDBNavbarItem>
+              <MDBNavbarLink href="/login">Login</MDBNavbarLink>
+            </MDBNavbarItem>
+           
+          </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
   );
 }
 
-//We just pass the fragment above, we use the ternary to say that if the user is loggedin,
-//we show projects and add Project, if it's not, we just show signup and login.
 
 export default Navbar;
 
-/*     <>
-      <Navbar bg="primary" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-          {loggedIn ? (
-            <Nav.Link to="/">Home</Nav.Link>
-              <span>Hello {user.name}</span>
-            <Nav.Link to="/workplaces">Workplaces</Nav.Link>
-            <Nav.Link to="/workplaces/new">Add Workplaces</Nav.Link>
-            <Nav.Link to={`/user/${user._id}`}>User</Nav.Link>
-            <button onClick={logout}>Logout</button>
-            ) : (
-            <Nav.Link to="/login">Log In</Nav.Link>
-            <Nav.Link to="/signup">Sign Up</Nav.Link>
-            )}
-          </Nav>
-        </Container>
-      </Navbar>
-      </> */
+
+    
+    {/* function Navbar() {
+     const { loggedIn, user, logout } = useContext(AuthContext);
+    
+     return (
+       <nav >
+         <Link to="/"> Home </Link>
+    
+         {loggedIn ? (
+           <>
+             <span>Hello {user.name}</span>
+             <Link to="/workplaces"> Workplaces </Link>
+             <Link to="/workplaces/new"> Add Workplace </Link>
+             <Link to={`/user/${user._id}`}> User </Link>
+             <button onClick={logout}>Logout</button>
+           </>
+         ) : (
+           <>
+             <Link to="/signup"> Signup </Link>
+             <Link to="/login"> Login </Link>
+           </>
+         )}
+       </nav>
+     );
+   } */}

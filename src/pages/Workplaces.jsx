@@ -34,8 +34,8 @@ function Workplaces() {
   return (
     <section>
 
-    <Searchbar />
-    
+    {/* <Searchbar /> */}
+
       <h1>Workplaces</h1> {/*Since Workplaces is an array, we can map */}
       {workplaces.map((workplace) => {
         return (
