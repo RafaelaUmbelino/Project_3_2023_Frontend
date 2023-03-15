@@ -29,7 +29,6 @@ function AuthWrapper(props) {
             },
           }
         );
-       
 
         //Here we know that the response is ok, so we can update the states.
 
@@ -67,7 +66,6 @@ function AuthWrapper(props) {
     authenticateUser();
   }, []);
 
-
   const tokenUpdate = async () => {
     try {
       const storedToken = localStorage.getItem("authToken");
@@ -83,7 +81,6 @@ function AuthWrapper(props) {
       console.log(error);
     }
   };
-
 
   //Grabs the context and provides it through the whole app.
 

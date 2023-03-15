@@ -324,6 +324,115 @@ function EditWorkplace() {
     //           onChange={handlePaid}
     //         /> */}
 
+    // <section>
+    //   <h1>Edit Workplace:</h1>
+
+    //   <form onSubmit={handleSubmit}>
+    //     <label htmlFor="name">Name</label>
+    //     <input
+    //       type="text"
+    //       name="name"
+    //       id="name"
+    //       value={name}
+    //       onChange={handleName}
+    //     />
+
+    //     <label htmlFor="address">Address</label>
+    //     <input
+    //       type="text"
+    //       name="address"
+    //       id="address"
+    //       value={address}
+    //       onChange={handleAddress}
+    //     />
+
+    //     <label htmlFor="link">Link</label>
+    //     <input
+    //       type="text"
+    //       name="link"
+    //       id="link"
+    //       value={link}
+    //       onChange={handleLink}
+    //     />
+
+    //     <label htmlFor="typeOfPlace">Type of Place</label>
+    //     <select
+    //       id="typeOfPlace"
+    //       name="typeOfPlace"
+    //       onChange={handleTypeOfPlace}
+    //     >
+    //       <option value={PlaceType.coworkSpace}>Cowork Space</option>
+    //       <option value={PlaceType.coffeeShop}>Coffee Shop</option>
+    //       <option value={PlaceType.library}>Library/Bookstore</option>
+    //     </select>
+
+    //     <label htmlFor="description">Description</label>
+    //     <input
+    //       type="text"
+    //       name="description"
+    //       id="description"
+    //       value={description}
+    //       onChange={handleDescription}
+    //     />
+
+    //     <label htmlFor="paid">Paid</label>
+    //     <select id="paid" name="paid" onChange={handlePaid}>
+    //       <option value={Paid.yes}>Yes</option>
+    //       <option value={Paid.no}>No</option>
+    //       <option value={Paid.order}>Order Something</option>
+    //     </select>
+
+    //     <label htmlFor="rating">Rating</label>
+    //     <select id="rating" name="rating" onChange={handleRating}>
+    //       <option value={Rating.stars1}>1</option>
+    //       <option value={Rating.stars2}>2</option>
+    //       <option value={Rating.stars3}>3</option>
+    //       <option value={Rating.stars4}>4</option>
+    //       <option value={Rating.stars5}>5</option>
+    //     </select>
+
+    //     <button type="submit">Edit Workplace</button>
+    //   </form>
+    // </section>
+    //-----------------
+
+    // {/*
+    //       <form onSubmit={handleSubmit}>
+    //         <label htmlFor="description">Description</label>
+    //         <input
+    //           type="text"
+    //           name="description"
+    //           id="description"
+    //           value={description}
+    //           onChange={handleDescription}
+    //         />
+
+    //         <label htmlFor="typeOfPlace">TypeOfPlace</label>
+    //         <input
+    //           type="text"
+    //           name="typeOfPlace"
+    //           id="typeOfPlace"
+    //           value={typeOfPlace}
+    //           onChange={handleTypeOfPlace}
+    //         />
+
+    //         <label htmlFor="rating">Rating</label>
+    //         <input
+    //           type="text"
+    //           name="rating"
+    //           id="rating"
+    //           value={rating}
+    //           onChange={handleRating}
+    //         />
+
+    //         <label htmlFor="paid">Paid</label>
+    //         <input
+    //           type="text"
+    //           name="paid"
+    //           id="paid"
+    //           value={paid}
+    //           onChange={handlePaid}
+    //         /> */}
   );
 }
 
