@@ -1,7 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
+
+
 
 // Define the PlaceType enum
 const PlaceType = {
