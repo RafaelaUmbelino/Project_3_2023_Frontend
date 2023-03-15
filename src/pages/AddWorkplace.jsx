@@ -121,8 +121,8 @@ function AddWorkplace() {
     <h1>Create Workplace:</h1>
 
     <form onSubmit={handleSubmit}>
-    <div class="row">
-      <div class="col">
+    <div className="row">
+      <div className="col">
       <label htmlFor="name">Name</label>
       <input
         type="text"
@@ -132,7 +132,7 @@ function AddWorkplace() {
         onChange={handleName}
       />
       </div>
-       <div class="col">
+       <div className="col">
 
       <label htmlFor="address">Address</label>
       <input

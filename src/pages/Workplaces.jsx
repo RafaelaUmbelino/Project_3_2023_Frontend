@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
-import Searchbar from "../components/SearchBar";
+
 
 //css
 
@@ -33,17 +33,30 @@ function Workplaces() {
 
   return (
     <section>
-
-    {/* <Searchbar /> */}
-
-      <h1>Workplaces</h1> {/*Since Workplaces is an array, we can map */}
-      {workplaces.map((workplace) => {
-        return (
-          <Link to={`/workplaces/${workplace._id}`} key={workplace._id}>
-            <h3>{workplace.description}</h3>
-          </Link>
-        );
-      })}
+      <h1>Workplaces</h1>
+      <div class="container-fluid px-4 px-sm-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+          {workplaces.map((workplace) => (
+            <div class="card h-100">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+                class="card-img-top"
+                alt="Fissure in Sandstone"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{workplace.name}</h5>
+                <p class="card-text">{workplace.description}</p>
+                <a
+                  href={`/workplaces/${workplace._id}`}
+                  class="btn btn-primary"
+                >
+                  View Details
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

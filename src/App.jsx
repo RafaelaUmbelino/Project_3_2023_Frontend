@@ -24,6 +24,9 @@ function App() {
 
       <Navbar />
 
+      <div className="center">
+      
+
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -43,6 +46,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/user/:id" element={<UserPage />} />
       </Routes>
+
+      </div>
     </div>
   );
 }

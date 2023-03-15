@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-
 import {
   MDBNavbar,
   MDBContainer,
@@ -21,64 +20,64 @@ function Navbar() {
 
   return (
     <MDBNavbar expand="lg" dark bgColor="dark">
-      <MDBContainer fluid>
-        <MDBNavbarBrand href="/">TITLE</MDBNavbarBrand>
-        <MDBNavbarToggler
-          type="button"
-          data-target="#navbarColor02"
-          aria-controls="navbarColor02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          onClick={() => setShowNavColor(!showNavColor)}
-        >
-          <MDBIcon icon="bars" fas />
-        </MDBNavbarToggler>
-        <MDBCollapse show={showNavColor} navbar>
-          <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-            <MDBNavbarItem className="active">
-              <MDBNavbarLink aria-current="page" href="/home">
-                Home
-              </MDBNavbarLink>
-            
-            </MDBNavbarItem>
-            {/* <MDBNavbarItem>
-              <MDBNavbarLink>{`Hello ${user.name}`}</MDBNavbarLink>
-            </MDBNavbarItem> */}
-            <MDBNavbarItem>
-              <MDBNavbarLink href="/workplaces">Workplaces</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href="/workplaces/new">
-                Add Workplaces
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href="/">Profile</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink  onClick={logout} >Logout</MDBNavbarLink>
-            </MDBNavbarItem>
-           
-           <MDBNavbarItem>
-              <MDBNavbarLink href="/signup">Signup</MDBNavbarLink>
-            </MDBNavbarItem>
-           <MDBNavbarItem>
-              <MDBNavbarLink href="/login">Login</MDBNavbarLink>
-            </MDBNavbarItem>
-           
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBContainer>
-    </MDBNavbar>
-  );
+    <MDBContainer fluid>
+      <MDBNavbarBrand href="/">TITLE</MDBNavbarBrand>
+      <MDBNavbarToggler
+        type="button"
+        data-target="#navbarColor02"
+        aria-controls="navbarColor02"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        onClick={() => setShowNavColor(!showNavColor)}
+      >
+        <MDBIcon icon="bars" fas />
+      </MDBNavbarToggler>
+      <MDBCollapse show={showNavColor} navbar>
+        <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+          <MDBNavbarItem>
+            <MDBNavbarLink aria-current="page" href="/">
+              Home
+            </MDBNavbarLink>
+          </MDBNavbarItem>
+          {loggedIn && (
+            <>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/workplaces">Workplaces</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/workplaces/new">Add Workplace</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href={`/user/${user._id}`}>User</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <button className="logout-button" onClick={logout}>
+                  Logout
+                </button>
+              </MDBNavbarItem>
+            </>
+          )}
+          {!loggedIn && (
+            <>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/signup">Signup</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/login">Login</MDBNavbarLink>
+              </MDBNavbarItem>
+            </>
+          )}
+        </MDBNavbarNav>
+      </MDBCollapse>
+    </MDBContainer>
+  </MDBNavbar>
+);
 }
-
 
 export default Navbar;
 
-
-    
-    {/* function Navbar() {
+{
+  /* function Navbar() {
      const { loggedIn, user, logout } = useContext(AuthContext);
     
      return (
@@ -101,4 +100,5 @@ export default Navbar;
          )}
        </nav>
      );
-   } */}
+   } */
+}
