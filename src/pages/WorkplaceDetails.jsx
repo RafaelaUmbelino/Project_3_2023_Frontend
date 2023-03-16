@@ -119,7 +119,7 @@ function WorkplaceDetails() {
                       >
                         Add Changes
                       </a>
-                      <button onClick={addFavorite}>Add to Favorites</button>
+                      <a href="#" onClick={addFavorite} className="btn btn-primary" id="detailsButtons">Add to Favorites</a>
                       {/* <a
                         class="btn btn-primary"
                         href=""
