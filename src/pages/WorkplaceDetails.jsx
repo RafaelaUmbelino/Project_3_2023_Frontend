@@ -119,14 +119,15 @@ function WorkplaceDetails() {
                       >
                         Add Changes
                       </a>
-                      <a
+                      <button onClick={addFavorite}>Add to Favorites</button>
+                      {/* <a
                         class="btn btn-primary"
                         href=""
                         id="detailsButtons"
                         onClick={addFavorite}
                       >
                         Add to Favorites
-                      </a>
+                      </a> */}
                     </>
                   )}
                 </div>

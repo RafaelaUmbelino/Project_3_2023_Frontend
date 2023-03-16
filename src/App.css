@@ -263,3 +263,7 @@ button[type="submit"]:hover {
   text-align: center;
   margin: 30px;
 }
+
+.cornerGif{
+  width: 100px;
+}

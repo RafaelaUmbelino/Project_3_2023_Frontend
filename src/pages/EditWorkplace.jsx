@@ -133,7 +133,7 @@ function EditWorkplace() {
 
   return (
     <section>
-      <h1>Edit Workplace:</h1>
+      <h1>Any Changes to This Workplace?</h1>
 
       <form onSubmit={handleSubmit}>
         <div class="row">

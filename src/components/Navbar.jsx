@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import cornerGif from "../assets/cornerGif.gif"
 
 import {
   MDBNavbar,
@@ -18,10 +19,18 @@ function Navbar() {
   const { loggedIn, user, logout } = useContext(AuthContext);
   const [showNavColor, setShowNavColor] = useState(false);
 
+ 
+
   return (
     <MDBNavbar expand="lg" dark bgColor="dark">
       <MDBContainer fluid>
-        <MDBNavbarBrand href="/">TITLE</MDBNavbarBrand>
+      <MDBNavbarBrand href="/">
+  <img
+    src={cornerGif}
+    alt="Image displaying Work From Anywhere"
+    className="cornerGif"
+  />
+</MDBNavbarBrand>
         <MDBNavbarToggler
           type="button"
           data-target="#navbarColor02"
