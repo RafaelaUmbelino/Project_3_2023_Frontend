@@ -121,7 +121,7 @@ function AddWorkplace() {
 
   return (
     <section>
-      <h1>Create Workplace:</h1>
+      <h1>Share a Workplace</h1>
 
       <form onSubmit={handleSubmit}>
         <div className="row">
@@ -155,6 +155,14 @@ function AddWorkplace() {
           value={link}
           onChange={handleLink}
         />
+        <label htmlFor="description">Description</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          value={description}
+          onChange={handleDescription}
+        />
 
         <label htmlFor="typeOfPlace">Type of Place</label>
         <select
@@ -167,14 +175,6 @@ function AddWorkplace() {
           <option value={PlaceType.library}>Library/Bookstore</option>
         </select>
 
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          name="description"
-          id="description"
-          value={description}
-          onChange={handleDescription}
-        />
 
         <label htmlFor="paid">Paid</label>
         <select id="paid" name="paid" onChange={handlePaid}>

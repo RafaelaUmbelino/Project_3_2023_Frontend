@@ -20,58 +20,74 @@ function Navbar() {
 
   return (
     <MDBNavbar expand="lg" dark bgColor="dark">
-    <MDBContainer fluid>
-      <MDBNavbarBrand href="/">TITLE</MDBNavbarBrand>
-      <MDBNavbarToggler
-        type="button"
-        data-target="#navbarColor02"
-        aria-controls="navbarColor02"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        onClick={() => setShowNavColor(!showNavColor)}
-      >
-        <MDBIcon icon="bars" fas />
-      </MDBNavbarToggler>
-      <MDBCollapse show={showNavColor} navbar>
-        <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-          <MDBNavbarItem>
-            <MDBNavbarLink aria-current="page" href="/">
-              Home
-            </MDBNavbarLink>
-          </MDBNavbarItem>
-          {loggedIn && (
-            <>
-              <MDBNavbarItem>
-                <MDBNavbarLink href="/workplaces">Workplaces</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href="/workplaces/new">Add Workplace</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href={`/user/${user._id}`}>User</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <button className="logout-button" onClick={logout}>
-                  Logout
-                </button>
-              </MDBNavbarItem>
-            </>
-          )}
-          {!loggedIn && (
-            <>
-              <MDBNavbarItem>
-                <MDBNavbarLink href="/signup">Signup</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href="/login">Login</MDBNavbarLink>
-              </MDBNavbarItem>
-            </>
-          )}
-        </MDBNavbarNav>
-      </MDBCollapse>
-    </MDBContainer>
-  </MDBNavbar>
-);
+      <MDBContainer fluid>
+        <MDBNavbarBrand href="/">TITLE</MDBNavbarBrand>
+        <MDBNavbarToggler
+          type="button"
+          data-target="#navbarColor02"
+          aria-controls="navbarColor02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={() => setShowNavColor(!showNavColor)}
+        >
+          <MDBIcon icon="bars" fas />
+        </MDBNavbarToggler>
+        <MDBCollapse show={showNavColor} navbar>
+          <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+            {loggedIn && (
+              <>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/workplaces" style={{ color: "white" }}>
+                    Workplaces
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink
+                    href="/workplaces/new"
+                    style={{ color: "white" }}
+                  >
+                    Share Workplace
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink
+                    href={`/user/${user._id}`}
+                    style={{ color: "white" }}
+                  >
+                    User Page
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+
+                <MDBNavbarItem>
+                  <MDBNavbarLink
+                    href=""
+                    style={{ color: "white" }}
+                    onClick={logout}
+                  >
+                    Logout
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+              </>
+            )}
+            {!loggedIn && (
+              <>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/signup" style={{ color: "white" }}>
+                    Signup
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/login" style={{ color: "white" }}>
+                    Login
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+              </>
+            )}
+          </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
+  );
 }
 
 export default Navbar;

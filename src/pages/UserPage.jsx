@@ -59,13 +59,13 @@ function UserPage() {
     <div>
       {user && ( //So that this runs after project
         <>
-          <h1>Hello, {user.name}</h1>
+          <h1 id="user-greeting">Hello, {user.name}</h1>
         </>
       )}
 
       <section>
         <h2 onClick={() => setShowCreated(!showCreated)}>
-          Your Workplaces{" "}
+          Your Created Workplaces{" "}
           <i className={`fas fa-chevron-${showCreated ? "up" : "down"}`}></i>
         </h2>
         {showCreated && (
@@ -84,13 +84,14 @@ function UserPage() {
                       <p class="card-text">{workplace.description}</p>
                       <a
                         href={`/workplaces/${workplace._id}`}
-                        class="btn btn-primary"
+                        class="btn btn-primary" id="detailsButtons"
                       >
                         View Details
                       </a>
-                      <button onClick={() => deleteWorkplace(workplace._id)}>
-                        Delete Workplace
-                      </button>
+                      <a class="btn btn-primary" href="" id="detailsButtons"
+                       onClick={() => deleteWorkplace(workplace._id)}>
+                        Delete Workplace </a>
+                      
                     </div>
                   </div>
                 ))}
@@ -120,15 +121,19 @@ function UserPage() {
                       <p class="card-text">{favoriteWorkplace.description}</p>
                       <a
                         href={`/workplaces/${favoriteWorkplace._id}`}
-                        class="btn btn-primary"
+                        class="btn btn-primary" id="detailsButtons"
                       >
                         View Details
                       </a>
-                      <button
+                      {/* <button
                         onClick={() => deleteFavorite(favoriteWorkplace._id)}
                       >
                         Delete Favorite
-                      </button>
+                      </button> */}
+
+                      <a class="btn btn-primary" href="" id="detailsButtons"
+                       onClick={() => deleteFavorite(favoriteWorkplace._id)}> Delete Favorite </a>
+
                     </div>
                   </div>
                 ))}

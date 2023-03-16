@@ -71,7 +71,7 @@ function WorkplaceDetails() {
       console.log(createdComment);
       // We replace: axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, body) for the one above //needs the url to post to, and the information to send. - We get the request from projects.
       await getWorkplace();
-      history.push(`/workplaces/${id}`)
+      history.push(`/workplaces/${id}`);
       // navigate(0);
     } catch (error) {
       console.log(error);
@@ -80,51 +80,84 @@ function WorkplaceDetails() {
   console.log(workplace);
   return (
     <div>
-      {workplace && ( //So that this runs after workplace
-        <>
-          <a href={workplace.link} target="_blank" rel="noreferrer">
-            <h3>Name: {workplace.name}</h3>
-          </a>
-          <h3>Description: {workplace.description}</h3>
-          <p>Address: {workplace.address}</p>
-          <p>Type: {workplace.typeOfPlace}</p>
-          <p>Paid: {workplace.paid}</p>
-          <p>Rating: {workplace.rating}</p>
-          <img src={workplace.imageUrl} alt="workplace" width="200" />
-        </>
-      )}
-
-      <p>Comments:</p>
-      {workplace &&
-        workplace.comments.map((comment) => {
-          return (
-            <div key={comment._id}>
-              <p>{comment.description}</p>
-              {/* <p>{comment.user.name}</p> */} 
-              <hr />
-            </div>
-          );
-        })}
-
       {workplace && (
-        <>
-          <Link to={`/workplaces/edit/${workplace._id}`}>Edit Workplace</Link>
-          <button onClick={addFavorite}>Add to Favorites</button>
-          {/* <button onClick={deleteWorkplace}>Delete</button> */}
-        </>
+        <section>
+          <div className="container-fluid">
+            <div className="row row-cols-2 g-2 my-4">
+              <div className="card pe-4">
+                <img
+                  src={workplace.imageUrl}
+                  className="card-img-top w-100"
+                  alt="Fissure in Sandstone"
+                />
+                <div className="card-body">
+                  <a href={workplace.link} target="_blank" rel="noreferrer">
+                    <h5 className="card-title">{workplace.name}</h5>
+                  </a>
+                  <p className="card-text">
+                    <b>Description:</b> {workplace.description}
+                  </p>
+                  <p className="card-text">
+                    <b>Address:</b> {workplace.address}
+                  </p>
+                  <p className="card-text">
+                    <b>Type of Place:</b>
+                    {workplace.typeOfPlace}
+                  </p>
+                  <p className="card-text">
+                    <b>Is it paid?</b> {workplace.paid}
+                  </p>
+                  <p className="card-text">
+                    <b>Rating:</b> {workplace.rating}
+                  </p>
+                  {workplace && (
+                    <>
+                      <a
+                        href={`/workplaces/edit/${workplace._id}`}
+                        className="btn btn-primary"
+                        id="detailsButtons"
+                      >
+                        Add Changes
+                      </a>
+                      <a
+                        class="btn btn-primary"
+                        href=""
+                        id="detailsButtons"
+                        onClick={addFavorite}
+                      >
+                        Add to Favorites
+                      </a>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div className="card ps-4">
+                <form onSubmit={handleSubmit}>
+                  {workplace &&
+                    workplace.comments.map((comment) => {
+                      return (
+                        <div key={comment._id}>
+                          <p>{comment.description}</p>
+                          {/* <p>{comment.user.name}</p> */}
+                          <hr />
+                        </div>
+                      );
+                    })}
+                  <label htmlFor="comment">Comment</label>
+                  <input
+                    type="text"
+                    name="comment"
+                    id="comment"
+                    value={description}
+                    onChange={handleComment}
+                  />
+                  <button type="submit">Add Comment</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
       )}
-
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="comment">Comment</label>
-        <input
-          type="text"
-          name="comment"
-          id="comment"
-          value={description}
-          onChange={handleComment}
-        />
-        <button type="submit">Add Comment</button>
-      </form>
     </div>
   );
 }

@@ -33,7 +33,7 @@ function Workplaces() {
 
   return (
     <section>
-      <h1>Workplaces</h1>
+      <h1 id="workplaces-title">Workplaces</h1>
       
       <div className="container-fluid px-4 px-sm-5">
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -46,7 +46,7 @@ function Workplaces() {
               />
               <div className="card-body">
                 <h5 className="card-title">{workplace.name}</h5>
-                <p className="card-text">{workplace.description}</p>
+                <p className="card-text">{workplace.address}</p>
                 <a
                   href={`/workplaces/${workplace._id}`}
                   className="btn btn-primary"

@@ -247,3 +247,19 @@ button[type="submit"]:hover {
   }
 }
 /*---------CARD IMAGE END-------*/
+
+
+/* --------- Workplace Details Buttons ----- */
+
+#detailsButtons{
+  margin: 10px;
+}
+
+#workplaces-title{
+  margin-bottom: 50px;
+}
+
+#user-greeting{
+  text-align: center;
+  margin: 30px;
+}

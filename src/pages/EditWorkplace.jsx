@@ -167,6 +167,14 @@ function EditWorkplace() {
           value={link}
           onChange={handleLink}
         />
+        <label htmlFor="description">Description</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          value={description}
+          onChange={handleDescription}
+        />
 
         <label htmlFor="typeOfPlace">Type of Place</label>
         <select
@@ -179,14 +187,6 @@ function EditWorkplace() {
           <option value={PlaceType.library}>Library/Bookstore</option>
         </select>
 
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          name="description"
-          id="description"
-          value={description}
-          onChange={handleDescription}
-        />
 
         <label htmlFor="paid">Paid</label>
         <select id="paid" name="paid" onChange={handlePaid}>
