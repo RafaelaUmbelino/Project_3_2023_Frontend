@@ -5,6 +5,8 @@ import workplaceService from "../services/workplace.service";
 
 function UserPage() {
   const [user, setUser] = useState(null);
+  const [showCreated, setShowCreated] = useState(false);
+  const [showFavorite, setShowFavorite] = useState(false);
 
   const { id } = useParams();
   /* let currentUser = req.payload_id; */
@@ -16,7 +18,6 @@ function UserPage() {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/user/${id}`
       );
-     
 
       setUser(response.data); //setting the state
     } catch (error) {
@@ -27,7 +28,7 @@ function UserPage() {
   useEffect(() => {
     getUser();
   }, []); //Dependency array []
- 
+
   const deleteWorkplace = async (workplaceId) => {
     try {
       const deleteWorkplace = await workplaceService.deleteWorkplace(
@@ -41,20 +42,17 @@ function UserPage() {
     }
   };
 
-  
-
   const deleteFavorite = async (favoriteId) => {
     try {
-        const deleteFavorite = await workplaceService.deleteFavorite(favoriteId);
-        console.log(deleteFavorite);
-        await getUser();
+      const deleteFavorite = await workplaceService.deleteFavorite(favoriteId);
+      console.log(deleteFavorite);
+      await getUser();
       // const deleteFavorite = await workplaceService.deleteFavorite(id);
       // console.log(deleteFavorite);
       // navigate("/workplaces");
     } catch (error) {
       console.log(error);
     }
-    
   };
 
   return (
@@ -65,38 +63,85 @@ function UserPage() {
         </>
       )}
 
-      <h2>Created:</h2>
-      {user &&
-        user.createdWorkplaces.map((workplace) => {
-          return (
-            <div key={workplace._id}>
-            <Link to={`/workplaces/${workplace._id}`} key={workplace._id}>
-              <h3>{workplace.description}</h3>
-            </Link>
-            <button onClick={() => deleteWorkplace(workplace._id)}>
-                Delete Workplace
-              </button>
-              </div>
-          );
-        })}
-
-      <h2>Favorites:</h2>
-      {user &&
-      
-        user.favoriteWorkplaces.map((favoriteWorkplaces) => {
-          return (
-            <div key={favoriteWorkplaces._id}>
-              <p>{favoriteWorkplaces.description}</p>
-              <button onClick={() => deleteFavorite(favoriteWorkplaces._id)}>Delete</button>
+      <section>
+        <h2 onClick={() => setShowCreated(!showCreated)}>
+          Your Workplaces{" "}
+          <i className={`fas fa-chevron-${showCreated ? "up" : "down"}`}></i>
+        </h2>
+        {showCreated && (
+          <div class="container-fluid px-4 px-sm-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+              {user &&
+                user.createdWorkplaces.map((workplace) => (
+                  <div class="card h-100">
+                    <img
+                      src={workplace.imageUrl}
+                      class="card-img-top"
+                      alt="Workplace"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">{workplace.name}</h5>
+                      <p class="card-text">{workplace.description}</p>
+                      <a
+                        href={`/workplaces/${workplace._id}`}
+                        class="btn btn-primary"
+                      >
+                        View Details
+                      </a>
+                      <button onClick={() => deleteWorkplace(workplace._id)}>
+                        Delete Workplace
+                      </button>
+                    </div>
+                  </div>
+                ))}
             </div>
-          );
-        })}
+          </div>
+        )}
+      </section>
 
-      <h2>Comments:</h2>
+      <section>
+        <h2 onClick={() => setShowFavorite(!showFavorite)}>
+          Your Favorite Workplaces{" "}
+          <i className={`fas fa-chevron-${showFavorite ? "up" : "down"}`}></i>
+        </h2>
+        {showFavorite && (
+          <div class="container-fluid px-4 px-sm-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+              {user &&
+                user.favoriteWorkplaces.map((favoriteWorkplace) => (
+                  <div class="card h-100">
+                    <img
+                      src={favoriteWorkplace.imageUrl}
+                      class="card-img-top"
+                      alt="Favorite Workplace"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">{favoriteWorkplace.name}</h5>
+                      <p class="card-text">{favoriteWorkplace.description}</p>
+                      <a
+                        href={`/workplaces/${favoriteWorkplace._id}`}
+                        class="btn btn-primary"
+                      >
+                        View Details
+                      </a>
+                      <button
+                        onClick={() => deleteFavorite(favoriteWorkplace._id)}
+                      >
+                        Delete Favorite
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* <h2>Comments:</h2>
       {user &&
         user.userComments.map((userComments) => {
           return <div key={userComments._id}></div>;
-        })}
+        })} */}
     </div>
   );
 }
