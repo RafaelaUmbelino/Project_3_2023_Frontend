@@ -16,6 +16,9 @@ function Login() {
   const { authenticateUser } = useContext(AuthContext); //Deconstruct authenticate user.
 
   //Handle for the submit button
+  //To be redirected to login after signup
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,18 +31,14 @@ function Login() {
 
       localStorage.setItem("authToken", response.data.authToken); //This stores the users login.
 
-      authenticateUser();
+      await authenticateUser();
 
-      console.log(response.data.authToken); //This is just to check if user is being created, if yes, add navigate.
       navigate("/workplaces");
+      console.log("________________-", response.data.authToken); //This is just to check if user is being created, if yes, add navigate.
     } catch (error) {
       console.log(error);
     }
   };
-
-  //To be redirected to login after signup
-
-  const navigate = useNavigate();
 
   return (
     <section>
@@ -70,10 +69,7 @@ function Login() {
       <p>Don't have an account?</p>
       <Link to="/signup">Signup</Link>
     </section>
-   
-
-    
-  )
+  );
 }
 
 export default Login;
