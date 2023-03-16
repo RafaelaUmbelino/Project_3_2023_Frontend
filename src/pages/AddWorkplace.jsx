@@ -62,6 +62,7 @@ function AddWorkplace() {
       .then((response) => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
+        console.log(response.fileUrl)
         setImageUrl(response.fileUrl);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
@@ -114,7 +115,7 @@ function AddWorkplace() {
       setDescription("");
       setPaid(Paid.no);*/
 
-      navigate(`/workplaces`);
+      
     } catch (error) {
       console.log(error);
     }
