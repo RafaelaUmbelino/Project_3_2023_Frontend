@@ -11,6 +11,9 @@
   align-items: center;
   height: 100vh;
 } */
+body{
+  font-family: 'Montserrat', sans-serif;
+}
 
 .bg-image-vertical {
   position: relative;
