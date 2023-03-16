@@ -96,11 +96,11 @@ function WorkplaceDetails() {
 
       <p>Comments:</p>
       {workplace &&
-        workplace.comments.map((comments) => {
+        workplace.comments.map((comment) => {
           return (
-            <div key={comments._id}>
-              <p>{comments.description}</p>
-              <p>{comments.user.name}</p>
+            <div key={comment._id}>
+              <p>{comment.description}</p>
+              <p>{comment.user.name}</p>
               <hr />
             </div>
           );
