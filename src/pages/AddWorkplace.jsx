@@ -69,6 +69,10 @@ function AddWorkplace() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!name || !address) {
+      alert("Please fill in all required fields.");
+      return;
+  }
     const body = {
       name,
       address,

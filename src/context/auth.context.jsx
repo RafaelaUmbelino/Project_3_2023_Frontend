@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -10,7 +11,7 @@ function AuthWrapper(props) {
   const [loading, setLoading] = useState(true); //Always starts as true, when get reply we change to false.
 
   //functions and methods for the token.
-
+  const navigate = useNavigate();
   const authenticateUser = async () => {
     //check for a token
 
@@ -60,6 +61,7 @@ function AuthWrapper(props) {
   const logout = () => {
     localStorage.removeItem("authToken");
     authenticateUser();
+    navigate("/")
   };
 
   useEffect(() => {

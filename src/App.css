@@ -18,17 +18,17 @@
   background-repeat: no-repeat;
   background-position: right center;
   background-size: auto 100%;
-  }
-  
-  @media (min-width: 1025px) {
+}
+
+@media (min-width: 1025px) {
   .h-custom-2 {
-  height: 100%;
+    height: 100%;
   }
-  }
+}
 
-  /* ------------------------------------- ADD WORKPLACE 1st TRY */
+/* ------------------------------------- ADD WORKPLACE 1st TRY */
 
-  /* form {
+/* form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,16 +159,15 @@ button[type="submit"]:hover {
     margin-left: 1rem;
     margin-right: 1rem;
   }
-  
+
   .col {
     flex: 1 0 100%;
     margin-right: 0;
     margin-bottom: 1rem;
   }
-} 
+}
 
 /*----------------*/
-
 
 .logout-button {
   background-color: transparent;
@@ -184,6 +183,8 @@ button[type="submit"]:hover {
 .logout-button:hover {
   text-decoration: underline;
 }
+
+/*----------------*/
 
 .container-fluid {
   max-width: 1200px;
@@ -226,3 +227,23 @@ button[type="submit"]:hover {
     max-width: 100%;
   }
 }
+
+/*---------CARD IMAGE-------*/
+.card-img-top {
+  width: 100%;
+  height: 13vw;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 40vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 60vw;
+  }
+}
+/*---------CARD IMAGE END-------*/

@@ -33,18 +33,18 @@ function App() {
         <Route
           path="/workplaces"
           element={
-            // <Private>
-
+            <Private>
             <Workplaces />
+            </Private>
           }
         />
 
-        <Route path="/workplaces/:id" element={<WorkplaceDetails />} />
-        <Route path="/workplaces/new" element={<AddWorkplace />} />
-        <Route path="/workplaces/edit/:id" element={<EditWorkplace />} />
+        <Route path="/workplaces/:id" element={<Private>{<WorkplaceDetails />}</Private>} />
+        <Route path="/workplaces/new" element={<Private>{<AddWorkplace />}</Private>} />
+        <Route path="/workplaces/edit/:id" element={<Private>{<EditWorkplace />} </Private> }/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user/:id" element={<UserPage />} />
+        <Route path="/user/:id" element={<Private>{<UserPage />}</Private>} />
       </Routes>
 
       </div>

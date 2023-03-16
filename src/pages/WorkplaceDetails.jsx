@@ -27,15 +27,15 @@ function WorkplaceDetails() {
 
   //Delete Workplace
 
-  const deleteWorkplace = async () => {
-    try {
-      const deleteWorkplace = await workplaceService.deleteWorkplace(id);
-      console.log(deleteWorkplace);
-      navigate("/workplaces");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const deleteWorkplace = async () => {
+  //   try {
+  //     const deleteWorkplace = await workplaceService.deleteWorkplace(id);
+  //     console.log(deleteWorkplace);
+  //     navigate("/workplaces");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   //Add to Favorites
 
@@ -100,7 +100,7 @@ function WorkplaceDetails() {
           return (
             <div key={comments._id}>
               <p>{comments.description}</p>
-              <p>{comments.user.email}</p>
+              <p>{comments.user.name}</p>
               <hr />
             </div>
           );
@@ -110,7 +110,7 @@ function WorkplaceDetails() {
         <>
           <Link to={`/workplaces/edit/${workplace._id}`}>Edit Workplace</Link>
           <button onClick={addFavorite}>Add to Favorites</button>
-          <button onClick={deleteWorkplace}>Delete</button>
+          {/* <button onClick={deleteWorkplace}>Delete</button> */}
         </>
       )}
 

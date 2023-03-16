@@ -27,15 +27,21 @@ function UserPage() {
   useEffect(() => {
     getUser();
   }, []); //Dependency array []
-   const deleteWorkplace = async () => {
+ 
+  const deleteWorkplace = async (workplaceId) => {
     try {
-      const deleteWorkplace = await workplaceService.deleteWorkplace(id);
+      const deleteWorkplace = await workplaceService.deleteWorkplace(
+        workplaceId
+      );
       console.log(deleteWorkplace);
-      navigate("/workplaces");
+      await getUser(); // update user state after deleting workplace
+      history.push(`/user/${id}`);
     } catch (error) {
       console.log(error);
     }
   };
+
+  
 
   const deleteFavorite = async (favoriteId) => {
     try {
@@ -63,9 +69,14 @@ function UserPage() {
       {user &&
         user.createdWorkplaces.map((workplace) => {
           return (
+            <div key={workplace._id}>
             <Link to={`/workplaces/${workplace._id}`} key={workplace._id}>
               <h3>{workplace.description}</h3>
             </Link>
+            <button onClick={() => deleteWorkplace(workplace._id)}>
+                Delete Workplace
+              </button>
+              </div>
           );
         })}
 
