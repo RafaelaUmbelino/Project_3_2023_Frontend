@@ -94,6 +94,8 @@ function WorkplaceDetails() {
         </>
       )}
 
+      
+
       <p>Comments:</p>
       {workplace &&
         workplace.comments.map((comments) => {
