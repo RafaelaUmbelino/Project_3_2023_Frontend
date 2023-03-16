@@ -100,7 +100,7 @@ function WorkplaceDetails() {
           return (
             <div key={comment._id}>
               <p>{comment.description}</p>
-              <p>{comment.user.name}</p>
+              {/* <p>{comment.user.name}</p> */} 
               <hr />
             </div>
           );
