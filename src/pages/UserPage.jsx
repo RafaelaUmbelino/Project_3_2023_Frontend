@@ -16,7 +16,6 @@ function UserPage() {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/user/${id}`
       );
-     
 
       setUser(response.data); //setting the state
     } catch (error) {
@@ -27,7 +26,7 @@ function UserPage() {
   useEffect(() => {
     getUser();
   }, []); //Dependency array []
-   const deleteWorkplace = async () => {
+  const deleteWorkplace = async () => {
     try {
       const deleteWorkplace = await workplaceService.deleteWorkplace(id);
       console.log(deleteWorkplace);
@@ -39,16 +38,15 @@ function UserPage() {
 
   const deleteFavorite = async (favoriteId) => {
     try {
-        const deleteFavorite = await workplaceService.deleteFavorite(favoriteId);
-        console.log(deleteFavorite);
-        await getUser();
+      const deleteFavorite = await workplaceService.deleteFavorite(favoriteId);
+      console.log(deleteFavorite);
+      await getUser();
       // const deleteFavorite = await workplaceService.deleteFavorite(id);
       // console.log(deleteFavorite);
       // navigate("/workplaces");
     } catch (error) {
       console.log(error);
     }
-    
   };
 
   return (
@@ -71,12 +69,13 @@ function UserPage() {
 
       <h2>Favorites:</h2>
       {user &&
-      
         user.favoriteWorkplaces.map((favoriteWorkplaces) => {
           return (
             <div key={favoriteWorkplaces._id}>
               <p>{favoriteWorkplaces.description}</p>
-              <button onClick={() => deleteFavorite(favoriteWorkplaces._id)}>Delete</button>
+              <button onClick={() => deleteFavorite(favoriteWorkplaces._id)}>
+                Delete
+              </button>
             </div>
           );
         })}

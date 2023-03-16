@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
 
-
 //css
 
 //components
@@ -34,21 +33,21 @@ function Workplaces() {
   return (
     <section>
       <h1>Workplaces</h1>
-      <div class="container-fluid px-4 px-sm-5">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <div className="container-fluid px-4 px-sm-5">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
           {workplaces.map((workplace) => (
-            <div class="card h-100">
+            <div className="card h-100">
               <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-                class="card-img-top"
+                src={workplace.imageUrl}
+                className="card-img-top"
                 alt="Fissure in Sandstone"
               />
-              <div class="card-body">
-                <h5 class="card-title">{workplace.name}</h5>
-                <p class="card-text">{workplace.description}</p>
+              <div className="card-body">
+                <h5 className="card-title">{workplace.name}</h5>
+                <p className="card-text">{workplace.description}</p>
                 <a
                   href={`/workplaces/${workplace._id}`}
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                 >
                   View Details
                 </a>
