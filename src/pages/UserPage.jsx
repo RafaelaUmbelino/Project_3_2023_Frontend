@@ -119,7 +119,7 @@ function UserPage() {
                     />
                     <div class="card-body">
                       <h5 class="card-title">{favoriteWorkplace.name}</h5>
-                      <p class="card-text">{favoriteWorkplace.description}</p>
+                      <p class="card-text">{favoriteWorkplace.address}</p>
                       <a
                         href={`/workplaces/${favoriteWorkplace._id}`}
                         class="btn btn-primary" id="detailsButtons"
