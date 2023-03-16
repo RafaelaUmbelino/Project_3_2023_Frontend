@@ -1,3 +1,4 @@
+
 /* body {
   max-width: 1280px;
   margin: 0 auto;
@@ -11,6 +12,15 @@
   align-items: center;
   height: 100vh;
 } */
+
+body{
+  /* background: url("../src/assets/colorForBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 0;
+  background-attachment: fixed; */
+  background-color: #F7F5F3 ;
+}
 
 .bg-image-vertical {
   position: relative;
@@ -231,3 +241,8 @@ button[type="submit"]:hover {
 
   width: 100px;
 }
+
+/* -------------------- Product Details. */
+
+
+
