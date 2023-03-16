@@ -27,6 +27,15 @@ function UserPage() {
   useEffect(() => {
     getUser();
   }, []); //Dependency array []
+   const deleteWorkplace = async () => {
+    try {
+      const deleteWorkplace = await workplaceService.deleteWorkplace(id);
+      console.log(deleteWorkplace);
+      navigate("/workplaces");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const deleteFavorite = async (favoriteId) => {
     try {

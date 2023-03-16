@@ -70,7 +70,9 @@ function WorkplaceDetails() {
       tokenUpdate();
       console.log(createdComment);
       // We replace: axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, body) for the one above //needs the url to post to, and the information to send. - We get the request from projects.
-      navigate(0);
+      await getWorkplace();
+      history.push(`/workplaces/${id}`)
+      // navigate(0);
     } catch (error) {
       console.log(error);
     }
