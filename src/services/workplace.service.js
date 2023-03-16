@@ -73,17 +73,14 @@ class WorkplaceService {
 
   //Add Comment
   addComment = (id, body) => {
-    console.log("this is the id", id)
-    console.log("this is the body", body)
+    console.log("this is the id", id);
+    console.log("this is the body", body);
     return this.api.post(`/comment/${id}`, body); //It's post because we're creating!
   };
 
-   uploadImage = (file) => {
-    return this.api.post("/upload", file)
+  uploadImage = (file) => {
+    return this.api.post("/api/upload", file);
   };
-
-
-
 }
 
 const workplaceService = new WorkplaceService();

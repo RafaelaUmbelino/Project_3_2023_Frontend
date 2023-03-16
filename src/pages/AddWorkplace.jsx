@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import workplaceService from "../services/workplace.service";
-import service from "../services/service"
+import service from "../services/service";
 // Define the PlaceType enum
 const PlaceType = {
   coworkSpace: "cowork space",
@@ -57,13 +57,13 @@ function AddWorkplace() {
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("imageUrl", e.target.files[0]);
 
-    service
+    workplaceService
       .uploadImage(uploadData)
       .then((response) => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
-        console.log(response.fileUrl)
-        setImageUrl(response.fileUrl);
+        console.log(response.data.fileUrl);
+        setImageUrl(response.data.fileUrl);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
@@ -73,7 +73,7 @@ function AddWorkplace() {
     if (!name || !address) {
       alert("Please fill in all required fields.");
       return;
-  }
+    }
     const body = {
       name,
       address,
@@ -82,7 +82,7 @@ function AddWorkplace() {
       rating,
       description,
       paid,
-     imageUrl,
+      imageUrl,
     }; //this is the information we'll send to the backend - We save on this variable what the user has on the input.
 
     try {
@@ -94,10 +94,10 @@ function AddWorkplace() {
         rating,
         description,
         paid,
-       imageUrl,
+        imageUrl,
       });
       console.log(createdWorkplace);
-      
+
       navigate("/workplaces");
 
       /* const storedToken = localStorage.getItem("authToken");
@@ -114,8 +114,6 @@ function AddWorkplace() {
       setRating(Rating.stars5);
       setDescription("");
       setPaid(Paid.no);*/
-
-      
     } catch (error) {
       console.log(error);
     }
@@ -123,84 +121,83 @@ function AddWorkplace() {
 
   return (
     <section>
-    <h1>Create Workplace:</h1>
+      <h1>Create Workplace:</h1>
 
-    <form onSubmit={handleSubmit}>
-    <div className="row">
-      <div className="col">
-      <label htmlFor="name">Name</label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        value={name}
-        onChange={handleName}
-      />
-      </div>
-       <div className="col">
+      <form onSubmit={handleSubmit}>
+        <div className="row">
+          <div className="col">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={handleName}
+            />
+          </div>
+          <div className="col">
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              value={address}
+              onChange={handleAddress}
+            />
+          </div>
+        </div>
 
-      <label htmlFor="address">Address</label>
-      <input
-        type="text"
-        name="address"
-        id="address"
-        value={address}
-        onChange={handleAddress}
-      />
-       </div>
-    </div>
+        <label htmlFor="link">Link</label>
+        <input
+          type="text"
+          name="link"
+          id="link"
+          value={link}
+          onChange={handleLink}
+        />
 
-      <label htmlFor="link">Link</label>
-      <input
-        type="text"
-        name="link"
-        id="link"
-        value={link}
-        onChange={handleLink}
-      />
+        <label htmlFor="typeOfPlace">Type of Place</label>
+        <select
+          id="typeOfPlace"
+          name="typeOfPlace"
+          onChange={handleTypeOfPlace}
+        >
+          <option value={PlaceType.coworkSpace}>Cowork Space</option>
+          <option value={PlaceType.coffeeShop}>Coffee Shop</option>
+          <option value={PlaceType.library}>Library/Bookstore</option>
+        </select>
 
-      <label htmlFor="typeOfPlace">Type of Place</label>
-      <select
-        id="typeOfPlace"
-        name="typeOfPlace"
-        onChange={handleTypeOfPlace}
-      >
-        <option value={PlaceType.coworkSpace}>Cowork Space</option>
-        <option value={PlaceType.coffeeShop}>Coffee Shop</option>
-        <option value={PlaceType.library}>Library/Bookstore</option>
-      </select>
+        <label htmlFor="description">Description</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          value={description}
+          onChange={handleDescription}
+        />
 
-      <label htmlFor="description">Description</label>
-      <input
-        type="text"
-        name="description"
-        id="description"
-        value={description}
-        onChange={handleDescription}
-      />
+        <label htmlFor="paid">Paid</label>
+        <select id="paid" name="paid" onChange={handlePaid}>
+          <option value={Paid.yes}>Yes</option>
+          <option value={Paid.no}>No</option>
+          <option value={Paid.order}>Order Something</option>
+        </select>
 
-      <label htmlFor="paid">Paid</label>
-      <select id="paid" name="paid" onChange={handlePaid}>
-        <option value={Paid.yes}>Yes</option>
-        <option value={Paid.no}>No</option>
-        <option value={Paid.order}>Order Something</option>
-      </select>
+        <label htmlFor="rating">Rating</label>
+        <select id="rating" name="rating" onChange={handleRating}>
+          <option value={Rating.stars1}>1</option>
+          <option value={Rating.stars2}>2</option>
+          <option value={Rating.stars3}>3</option>
+          <option value={Rating.stars4}>4</option>
+          <option value={Rating.stars5}>5</option>
+        </select>
 
-      <label htmlFor="rating">Rating</label>
-      <select id="rating" name="rating" onChange={handleRating}>
-        <option value={Rating.stars1}>1</option>
-        <option value={Rating.stars2}>2</option>
-        <option value={Rating.stars3}>3</option>
-        <option value={Rating.stars4}>4</option>
-        <option value={Rating.stars5}>5</option>
-      </select>
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
 
-      <input type="file" onChange={(e) => handleFileUpload(e)} />
-
-      <button type="submit">Add Workplace</button>
-    </form>
-  </section>
-);
+        <button type="submit">Add Workplace</button>
+      </form>
+    </section>
+  );
 }
 
 export default AddWorkplace;
