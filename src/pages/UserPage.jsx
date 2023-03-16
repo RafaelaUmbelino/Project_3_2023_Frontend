@@ -88,9 +88,10 @@ function UserPage() {
                       >
                         View Details
                       </a>
-                      <a class="btn btn-primary" href="" id="detailsButtons"
-                       onClick={() => deleteWorkplace(workplace._id)}>
-                        Delete Workplace </a>
+
+                        <a href="#" onClick={() => deleteWorkplace(workplace._id)} className="btn btn-primary" id="detailsButtons">Delete Workplace </a>
+
+                        
                       
                     </div>
                   </div>
@@ -131,9 +132,10 @@ function UserPage() {
                         Delete Favorite
                       </button> */}
 
-                      <a class="btn btn-primary" href="" id="detailsButtons"
-                       onClick={() => deleteFavorite(favoriteWorkplace._id)}> Delete Favorite </a>
+                      {/* <a class="btn btn-primary" href="" id="detailsButtons"
+                       onClick={() => deleteFavorite(favoriteWorkplace._id)}> Delete Favorite </a> */}
 
+                       <a href="#" onClick={() => deleteFavorite(favoriteWorkplace._id)} className="btn btn-primary" id="detailsButtons">Delete Favorite </a>
                     </div>
                   </div>
                 ))}
