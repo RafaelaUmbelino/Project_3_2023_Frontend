@@ -81,7 +81,7 @@ function UserPage() {
                     />
                     <div class="card-body">
                       <h5 class="card-title">{workplace.name}</h5>
-                      <p class="card-text">{workplace.description}</p>
+                      <p class="card-text">{workplace.address}</p>
                       <a
                         href={`/workplaces/${workplace._id}`}
                         class="btn btn-primary" id="detailsButtons"
