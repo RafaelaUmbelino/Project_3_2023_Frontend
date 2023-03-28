@@ -33,7 +33,7 @@ With Roaming Genie, you'll never have to work in the same place twice! Start exp
 ## React Router Routes (React App)
 
 | Path                                  | Component              | Permissions                | Behavior                                                                                                                |
-| ------------------------------------- | ---------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --- |
+| ------------------------------------- | ---------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `/login`                              | LoginPage              | anon only `<AnonRoute>`    | Login form, navigates to home page after login.                                                                         |
 | `/signup`                             | SignupPage             | anon only `<AnonRoute>`    | Signup form, navigates to login page after signup.                                                                      |
 | `/`                                   | HomePage               | public `<Route>`           | Home page.                                                                                                              |
@@ -43,9 +43,7 @@ With Roaming Genie, you'll never have to work in the same place twice! Start exp
 | `/user-profile/created/:createdID`    | DisplayFavoriteDetails | user only `<PrivateRoute>` | Access a favorite workplace.                                                                                            |
 | `/workplace/add`                      | CreateWorkplacePage    | user only `<PrivateRoute>` | Create new workplace form.                                                                                              |
 | `/workplaces`                         | WorkplacesListPage     | user only `<PrivateRoute>` | Workplaces added by all users with the possibility of filtering by city and type of place, and sorting by rating place. |
-| `/workplace/:workplaceId`             | WorkplaceDetailPage    | user only `<PrivateRoute>` | Workplace details. Shows workplace details and comments.                                                                |     |
-
-|
+| `/workplace/:workplaceId`             | WorkplaceDetailPage    | user only `<PrivateRoute>` | Workplace details. Shows workplace details and comments.                                                                |
 
 ## Components
 
