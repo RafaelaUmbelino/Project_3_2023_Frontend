@@ -8,7 +8,11 @@
 
 ## Description
 
-This is an app where developers can help each other by sharing workplaces.
+Welcome to Roaming Genie, an app that lets developers share their favorite workspaces outside of their homes! Whether it's a cozy coffee shop, a professional coworking space, or a peaceful library, Roaming Genie lets you discover new places to work and connect with other developers who share your tastes.
+
+With Roaming Genie, you can browse the places other developers added to find workspaces that are conveniently located, and read reviews from other developers to get a sense of what each place is like. You can also add your own favorite workspaces, add workspaces to your favorites and leave comments and to help other developers find the best spots.
+
+With Roaming Genie, you'll never have to work in the same place twice! Start exploring new workplaces today and connect with a community of developers who love to work on the go.
 
 ## User Stories
 
@@ -21,13 +25,6 @@ This is an app where developers can help each other by sharing workplaces.
 - **Add workplace Page:** As a logged in user I can access the add workplace page so that I can create a new workplace.
 - **Edit workplace:** As a logged in user I can access the edit workplace page so that I can edit the workplace I created.
 - **Workplace Details:** As a user I want to see the workplace details and comments.
-
-## Backlog
-
-<!-- - Add weather widget
-- lottie interactions
-- users can bet
-- add geolocation to events when creating -->
 
 <br>
 
@@ -170,15 +167,11 @@ Components:
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/screeeen/project-client)
+[Client repository Link](https://github.com/RafaelaUmbelino/Project_3_2023_Frontend)
 
-[Server repository Link](https://github.com/screeeen/project-server)
+[Server repository Link](https://github.com/RafaelaUmbelino/Project_3_2023_backend)
 
-[Deployed App Link](http://heroku.com)
-
-### Slides
-
-[Slides Link](http://slides.com) - The url to your _public_ presentation slides
+[Deployed App Link](https://roaming-genie.netlify.app/)
 
 ### Contributors
 
